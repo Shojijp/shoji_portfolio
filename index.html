@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shoji – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shoji / Sofiane – Art, Tech, Sport & Languages portfolio">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">Shoji</div>
+      <nav class="nav">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">Story</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#lab" class="nav-link">Lab</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="section hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="hero-kicker">Shoji / Sofiane Teneba</p>
+          <h1 class="hero-title">
+            Art, Tech, Sport & Languages<br>
+            <span class="hero-highlight">one life, many layers.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Minimal but deep. This is my open-world portfolio:
+            photography, programming, theatre, dance, sports, data,
+            and the path from France to Japan.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn primary">Explore Projects</a>
+            <a href="#about" class="btn ghost">Read My Story</a>
+          </div>
+          <div class="hero-tags">
+            <span class="tag">Photo</span>
+            <span class="tag">Data & Code</span>
+            <span class="tag">Volley & Basket</span>
+            <span class="tag">K-pop Dance</span>
+            <span class="tag">Japanese & Sign Languages</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <p class="hero-card-title">Current focus</p>
+          <ul class="hero-card-list">
+            <li>JLPT N3 → N2 preparation</li>
+            <li>Keio SFC AO portfolio</li>
+            <li>Hybrid body: sport + performance</li>
+            <li>Building this living archive</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">Story</h2>
+        <p class="section-intro">
+          I’m Sofiane, also known as Shoji (翔司). I grew up between
+          noise, silence, ambition and doubt. I learned to move,
+          to code, to perform, to switch languages – and to rebuild
+          myself after difficult moments.
+        </p>
+        <div class="about-grid">
+          <div class="about-block">
+            <h3>Who I am</h3>
+            <p>
+              Student in data / tech, former semi-pro volley player,
+              dancer, theatre kid, language addict. I’m building a life
+              between France, Japan and beyond – with a focus on
+              environment & information studies.
+            </p>
+          </div>
+          <div class="about-block">
+            <h3>Languages</h3>
+            <p>
+              French (native), English, Japanese (conversational, aiming N2),
+              LSF, JSL (Japanese Sign Language, in progress),
+              plus early steps in Korean and Mandarin.
+            </p>
+          </div>
+          <div class="about-block">
+            <h3>What I care about</h3>
+            <p>
+              Connection. Accessibility. Movement. Expression. I love
+              spaces where art, tech and people overlap – like Keio SFC:
+              not just classes, but projects, circles, and real impact.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Projects / Portfolio</h2>
+          <p class="section-intro">
+            Browse by theme. Click a card to dive deeper into each project:
+            artistic work, sports achievements, tech & IUT projects,
+            language journeys and more.
+          </p>
+        </div>
+
+        <!-- FILTERS -->
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="art">Artistic</button>
+          <button class="filter-btn" data-filter="sport">Sport</button>
+          <button class="filter-btn" data-filter="tech">Tech / IUT</button>
+          <button class="filter-btn" data-filter="languages">Languages</button>
+          <button class="filter-btn" data-filter="lab">Lab / Misc</button>
+        </div>
+
+        <!-- GRID -->
+        <div class="projects-grid" id="projects-grid">
+          <!-- ARTISTIC -->
+          <article class="project-card" data-category="art">
+            <div class="project-pill">Photography</div>
+            <h3 class="project-title">Street & travel photography</h3>
+            <p class="project-meta">Seoul, Tokyo, Beijing, France</p>
+            <p class="project-desc">
+              A selection of photos shot during my trips – capturing
+              quiet moments, neon streets and in-between spaces.
+            </p>
+            <a href="#" class="project-link">View gallery (soon)</a>
+          </article>
+
+          <article class="project-card" data-category="art">
+            <div class="project-pill">Dance</div>
+            <h3 class="project-title">K-pop dance covers</h3>
+            <p class="project-meta">Performance & body control</p>
+            <p class="project-desc">
+              Choreographies from groups and solo artists, filmed
+              and performed with focus on rhythm, precision and stage presence.
+            </p>
+            <a href="#" class="project-link">Watch performances (soon)</a>
+          </article>
+
+          <article class="project-card" data-category="art">
+            <div class="project-pill">Theatre</div>
+            <h3 class="project-title">Theatre & acting</h3>
+            <p class="project-meta">Voice, expression, presence</p>
+            <p class="project-desc">
+              Stage projects and scenes that taught me how to use voice,
+              silence and emotion to reach an audience.
+            </p>
+            <a href="#" class="project-link">Discover the roles</a>
+          </article>
+
+          <article class="project-card" data-category="art">
+            <div class="project-pill">Video / Editing</div>
+            <h3 class="project-title">“L’ALL IN” – personal montage</h3>
+            <p class="project-meta">Storytelling, editing, music sync</p>
+            <p class="project-desc">
+              A personal video project about going all-in on my life path,
+              combining footage, narration and music to show my journey.
+            </p>
+            <a href="#" class="project-link">Watch the project (soon)</a>
+          </article>
+
+          <!-- SPORT -->
+          <article class="project-card" data-category="sport">
+            <div class="project-pill">Volley</div>
+            <h3 class="project-title">Volley 4x4 – Rennes (Sourd)</h3>
+            <p class="project-meta">Gold medal – post 4</p>
+            <p class="project-desc">
+              Semi-pro level 4x4 tournament in Rennes, gold medal with a
+              deaf team. Position: outside hitter (post 4).
+            </p>
+            <a href="#" class="project-link">Match recap (soon)</a>
+          </article>
+
+          <article class="project-card" data-category="sport">
+            <div class="project-pill">Basketball</div>
+            <h3 class="project-title">Inter-university tournament</h3>
+            <p class="project-meta">2nd place – team effort</p>
+            <p class="project-desc">
+              University basketball competition, second place finish.
+              Learning leadership, strategy and team communication.
+            </p>
+            <a href="#" class="project-link">Highlights (soon)</a>
+          </article>
+
+          <article class="project-card" data-category="sport">
+            <div class="project-pill">Captain</div>
+            <h3 class="project-title">Basket – captain, March 26</h3>
+            <p class="project-meta">Upcoming event</p>
+            <p class="project-desc">
+              Leading the team as captain in an upcoming tournament.
+              Focus on mindset, calm under pressure and coordination.
+            </p>
+            <a href="#" class="project-link">Follow this project</a>
+          </article>
+
+          <!-- TECH / IUT -->
+          <article class="project-card" data-category="tech">
+            <div class="project-pill">Data / IUT</div>
+            <h3 class="project-title">Data science projects – IUT</h3>
+            <p class="project-meta">Science des données</p>
+            <p class="project-desc">
+              University projects using Python, R and statistics:
+              data cleaning, analysis, simple models and visualizations.
+            </p>
+            <a href="#" class="project-link">See technical details</a>
+          </article>
+
+          <article class="project-card" data-category="tech">
+            <div class="project-pill">Code</div>
+            <h3 class="project-title">Small tools & experiments</h3>
+            <p class="project-meta">Python / Web / Scripts</p>
+            <p class="project-desc">
+              Little utilities, prototypes and experiments built to explore
+              ideas quickly and learn by doing.
+            </p>
+            <a href="#" class="project-link">View on GitHub</a>
+          </article>
+
+          <!-- LANGUAGES -->
+          <article class="project-card" data-category="languages">
+            <div class="project-pill">Japanese</div>
+            <h3 class="project-title">Japanese journey – JLPT N3 → N2</h3>
+            <p class="project-meta">Study log & progress</p>
+            <p class="project-desc">
+              From self-study to real conversations: my preparation for JLPT N3,
+              and the path toward N2 while living in Japan.
+            </p>
+            <a href="#" class="project-link">Read the journey</a>
+          </article>
+
+          <article class="project-card" data-category="languages">
+            <div class="project-pill">Sign languages</div>
+            <h3 class="project-title">LSF, JSL & beyond</h3>
+            <p class="project-meta">Accessibility & connection</p>
+            <p class="project-desc">
+              Learning sign languages as a bridge between worlds:
+              French Sign Language, Japanese Sign Language and more.
+            </p>
+            <a href="#" class="project-link">See the vision</a>
+          </article>
+
+          <!-- LAB / MISC -->
+          <article class="project-card" data-category="lab">
+            <div class="project-pill">Lab</div>
+            <h3 class="project-title">Shoji Lab</h3>
+            <p class="project-meta">Unfinished / raw / experiments</p>
+            <p class="project-desc">
+              Drafts, ideas, sketches, work-in-progress and messy things
+              that don’t fit in a clean category yet.
+            </p>
+            <a href="#lab" class="project-link">Enter the Lab</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAB SECTION -->
+    <section id="lab" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Lab / Archive</h2>
+        <p class="section-intro">
+          This is the “open source” part of my world: rough notes,
+          early prototypes, tests and ideas that might become real
+          projects later.
+        </p>
+        <div class="lab-grid">
+          <div class="lab-card">
+            <h3>Code snippets</h3>
+            <p>Small scripts, notebooks and experiments with data, web and tools.</p>
+          </div>
+          <div class="lab-card">
+            <h3>Visual drafts</h3>
+            <p>Unfinished edits, moodboards, frames from future videos.</p>
+          </div>
+          <div class="lab-card">
+            <h3>Notes & ideas</h3>
+            <p>Text fragments, storyboard lines, future circle ideas for Keio SFC.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-intro">
+          For collaborations, university applications, or just to say hi:
+        </p>
+        <div class="contact-box">
+          <p><strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/your-username" target="_blank" rel="noreferrer">github.com/your-username</a></p>
+          <p><strong>Location:</strong> France → Japan (soon)</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Shoji / Sofiane. Built as a living archive.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
