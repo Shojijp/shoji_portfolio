@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Art — Shoji / Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">Shoji</div>
+      <nav class="nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="index.html#about" class="nav-link">Story</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section projects-landing">
+      <div class="container">
+        <p class="hero-kicker">Artistic • Shoji Archive</p>
+        <h1 class="projects-landing-title">Art, image & expression</h1>
+        <p class="projects-landing-subtitle">
+          Theatre • Dance • Photographie — pick a layer and explore.
+        </p>
+
+        <!-- SUBCATEGORY PILLS -->
+        <div class="subcat-row" role="tablist" aria-label="Art subcategories">
+          <button class="subcat-btn active" data-sub="all">All</button>
+          <button class="subcat-btn" data-sub="theatre">Theatre</button>
+          <button class="subcat-btn" data-sub="dance">Dance</button>
+          <button class="subcat-btn" data-sub="photo">Photographie</button>
+        </div>
+
+        <!-- Projects grid -->
+        <div class="projects-grid subcat-grid" id="subcat-grid">
+          <!-- example project card -->
+          <article class="project-card" data-category="theatre">
+            <span class="project-pill">Theatre</span>
+            <h3 class="project-title">Short Play — "Night Noise"</h3>
+            <p class="project-desc">Script, staging, and a 4 min recorded excerpt.</p>
+            <a class="project-link view-btn" href="#" data-id="p1">View</a>
+          </article>
+
+          <article class="project-card" data-category="dance">
+            <span class="project-pill">Dance</span>
+            <h3 class="project-title">K-pop choreography cover</h3>
+            <p class="project-desc">Video montage & rehearsal notes.</p>
+            <a class="project-link view-btn" href="#" data-id="p2">View</a>
+          </article>
+
+          <article class="project-card" data-category="photo">
+            <span class="project-pill">Photographie</span>
+            <h3 class="project-title">Silent Streets</h3>
+            <p class="project-desc">Black & white urban series — 12 frames.</p>
+            <a class="project-link view-btn" href="#" data-id="p3">View</a>
+          </article>
+
+          <article class="project-card" data-category="dance">
+            <span class="project-pill">Dance</span>
+            <h3 class="project-title">Flow Sequence</h3>
+            <p class="project-desc">Improvisation & movement study.</p>
+            <a class="project-link view-btn" href="#" data-id="p4">View</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Shoji / Sofiane. Built as a living archive.</p>
+    </div>
+  </footer>
+
+  <!-- Modal template -->
+  <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" aria-label="Close">×</button>
+      <div class="modal-body">
+        <h3 id="modal-title"></h3>
+        <p id="modal-desc"></p>
+        <!-- optionally an image/video -->
+        <div id="modal-media"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
