@@ -514,3 +514,80 @@ a {
   font-size: 0.92rem;
   line-height: 1.55;
 }
+
+/* SUBCATEGORY PILL ROW */
+.subcat-row {
+  display:flex;
+  gap:0.5rem;
+  margin-top:1rem;
+  margin-bottom:1.6rem;
+  flex-wrap:wrap;
+}
+
+.subcat-btn {
+  padding:0.45rem 0.9rem;
+  border-radius:999px;
+  border:1px solid var(--border-soft);
+  background:rgba(255,255,255,0.9);
+  cursor:pointer;
+  color:var(--text-soft);
+  transition:transform .12s ease, background .12s, color .12s;
+  font-size:0.9rem;
+}
+
+.subcat-btn.active {
+  background:var(--accent);
+  color:#2b1a1f;
+  border-color:var(--accent);
+  transform:translateY(-2px);
+}
+
+/* animated grid items */
+.subcat-grid .project-card {
+  opacity:0;
+  transform: translateY(10px) scale(0.995);
+  transition: opacity .36s ease, transform .36s cubic-bezier(.2,.8,.2,1);
+}
+
+/* visible state applied by JS */
+.subcat-grid .project-card.visible {
+  opacity:1;
+  transform: translateY(0) scale(1);
+}
+
+/* small stagger helper: we will set style via JS (delay) */
+
+/* Modal */
+.modal {
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:60;
+}
+.modal[aria-hidden="false"] { display:flex; }
+.modal-backdrop {
+  position:absolute; inset:0; background:rgba(10,8,12,0.55); backdrop-filter: blur(2px);
+}
+.modal-panel {
+  position:relative;
+  max-width:900px;
+  width:94%;
+  margin:1.2rem;
+  background:var(--card);
+  border-radius:14px;
+  padding:1.2rem;
+  z-index:2;
+  box-shadow: 0 24px 60px rgba(9,6,12,0.45);
+}
+.modal-close {
+  position:absolute;
+  right:0.6rem;
+  top:0.4rem;
+  background:transparent;
+  border:0;
+  font-size:1.3rem;
+  cursor:pointer;
+}
+#modal-media img, #modal-media video { max-width:100%; display:block; margin-top:0.8rem; border-radius:8px; }
