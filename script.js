@@ -62,7 +62,7 @@
     p1: { title: 'Short Play — "Night Noise"', desc: 'Script + staging + excerpt. Directed in 2025, 8 min.', media: '' },
     p2: { title: 'K-pop choreography cover', desc: 'Full rehearsal + montage. 2 camera edit.', media: '' },
     p3: { title: 'Silent Streets', desc: '12 B/W frames exploring silence in cityscapes.', media: '' },
-    p4: { title: 'Flow Sequence', desc: 'Improvisation study for movement flow.', media: '' }
+    p4: { title: 'Flow Sequence', desc: 'Improvisation study for movement flow.', media: '' },
 
     n1: {title: "Why I want this portfolio to feel alive",desc: "This note explores the idea of a portfolio that is not frozen in time, but grows alongside learning, movement, and self-reinvention.",media: ""},
     n2: {title: "Ordinary moments that change perspective", desc: "A notebook entry about everyday life, memory, routine, and how small moments can quietly shape a person.",media: ""},
