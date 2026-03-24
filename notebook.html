@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notebook – Shoji</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Notebook of Shoji / Sofiane: reflections, unfinished projects, programming notes, and daily life.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">Shoji</div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="story.html" class="nav-link">Story</a>
+        <a href="project.html" class="nav-link">Projects</a>
+        <a href="notebook.html" class="nav-link">Notebook</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section notebook-hero">
+      <div class="container">
+        <p class="hero-kicker">Shoji Notebook</p>
+        <h1 class="notebook-title">Notes, ideas, unfinished projects, and everyday life.</h1>
+        <p class="notebook-subtitle">
+          This space gathers thoughts, experiments, work in progress, programming notes,
+          and pieces of daily life. It is not a final gallery, but a living archive.
+        </p>
+
+        <div class="subcat-row" role="tablist" aria-label="Notebook categories">
+          <button class="subcat-btn active" data-sub="all">All</button>
+          <button class="subcat-btn" data-sub="reflection">Reflection</button>
+          <button class="subcat-btn" data-sub="daily">Daily</button>
+          <button class="subcat-btn" data-sub="lab">Lab</button>
+          <button class="subcat-btn" data-sub="programming">Programming</button>
+          <button class="subcat-btn" data-sub="unfinished">Unfinished</button>
+        </div>
+
+        <div class="projects-grid subcat-grid" id="subcat-grid">
+          <article class="project-card notebook-card" data-category="reflection">
+            <span class="project-pill">Reflection</span>
+            <p class="notebook-meta">Notebook Entry</p>
+            <h3 class="project-title">Why I want this portfolio to feel alive</h3>
+            <p class="project-desc">
+              A short reflection on why I do not want a static portfolio, but a space that grows with me.
+            </p>
+            <a class="project-link view-btn" href="#" data-id="n1">Read note</a>
+          </article>
+
+          <article class="project-card notebook-card" data-category="daily">
+            <span class="project-pill">Daily</span>
+            <p class="notebook-meta">Everyday Note</p>
+            <h3 class="project-title">Ordinary moments that change perspective</h3>
+            <p class="project-desc">
+              Fragments of daily life, routines, moods, and the kind of small moments that stay in memory.
+            </p>
+            <a class="project-link view-btn" href="#" data-id="n2">Read note</a>
+          </article>
+
+          <article class="project-card notebook-card" data-category="lab">
+            <span class="project-pill">Lab</span>
+            <p class="notebook-meta">Concept / Test</p>
+            <h3 class="project-title">Living archive structure experiment</h3>
+            <p class="project-desc">
+              Early thoughts on how to organize a portfolio so visitors can explore different layers freely.
+            </p>
+            <a class="project-link view-btn" href="#" data-id="n3">Read note</a>
+          </article>
+
+          <article class="project-card notebook-card" data-category="programming">
+            <span class="project-pill">Programming</span>
+            <p class="notebook-meta">Code Note</p>
+            <h3 class="project-title">Ideas for a dynamic post system</h3>
+            <p class="project-desc">
+              Technical notes about making the notebook easier to update without editing the full site manually.
+            </p>
+            <a class="project-link view-btn" href="#" data-id="n4">Read note</a>
+          </article>
+
+          <article class="project-card notebook-card" data-category="unfinished">
+            <span class="project-pill">Unfinished</span>
+            <p class="notebook-meta">Work in Progress</p>
+            <h3 class="project-title">Project concept still looking for its final form</h3>
+            <p class="project-desc">
+              A direction I started, paused, and may continue later when the right structure becomes clear.
+            </p>
+            <a class="project-link view-btn" href="#" data-id="n5">Read note</a>
+          </article>
+
+          <article class="project-card notebook-card" data-category="daily">
+            <span class="project-pill">Daily</span>
+            <p class="notebook-meta">Japan / Future Daily</p>
+            <h3 class="project-title">A future notebook of life in Japan</h3>
+            <p class="project-desc">
+              A placeholder for future daily entries, routines, discoveries, and personal growth in Japan.
+            </p>
+            <a class="project-link view-btn" href="#" data-id="n6">Read note</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Shoji / Sofiane. Built as a living archive.</p>
+    </div>
+  </footer>
+
+  <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" aria-label="Close">×</button>
+      <div class="modal-body">
+        <h3 id="modal-title"></h3>
+        <p id="modal-desc"></p>
+        <div id="modal-media"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
