@@ -63,7 +63,13 @@
     p2: { title: 'K-pop choreography cover', desc: 'Full rehearsal + montage. 2 camera edit.', media: '' },
     p3: { title: 'Silent Streets', desc: '12 B/W frames exploring silence in cityscapes.', media: '' },
     p4: { title: 'Flow Sequence', desc: 'Improvisation study for movement flow.', media: '' }
-  };
+
+    n1: {title: "Why I want this portfolio to feel alive",desc: "This note explores the idea of a portfolio that is not frozen in time, but grows alongside learning, movement, and self-reinvention.",media: ""},
+    n2: {title: "Ordinary moments that change perspective", desc: "A notebook entry about everyday life, memory, routine, and how small moments can quietly shape a person.",media: ""},
+    n3: {title: "Living archive structure experiment",desc: "Early thoughts on how to build a portfolio that feels open, layered, and easy to explore depending on each visitor’s interests.",media: ""},
+    n4: {title: "Ideas for a dynamic post system",desc: "A technical note about future ways to publish notebook entries more easily, without editing the whole site manually every time.",media: ""},
+    n5: {title: "Project concept still looking for its final form",desc: "Some ideas do not fail — they simply remain unfinished until the right structure, timing, or direction appears.",media: ""},
+    n6: {title: "A future notebook of life in Japan",desc: "This section is meant to later document daily life in Japan: routines, cultural discoveries, challenges, and moments of growth.",media: ""},};
 
   function openModal(id) {
     const content = PROJECT_CONTENT[id];
