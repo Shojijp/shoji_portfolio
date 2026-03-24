@@ -544,8 +544,8 @@ a {
 
 /* animated grid items */
 .subcat-grid .project-card {
-  opacity:0;
-  transform: translateY(10px) scale(0.995);
+  opacity: 1;
+  transform: translateY(0) scale(1);
   transition: opacity .36s ease, transform .36s cubic-bezier(.2,.8,.2,1);
 }
 
@@ -724,7 +724,10 @@ a {
   font-size: 0.92rem;
   line-height: 1.65;
 }
-
+.contact-text {
+  color: var(--text);
+  font-size: 0.92rem;
+}
 .contact-link {
   color: var(--accent-strong);
   font-size: 0.92rem;
@@ -766,7 +769,4 @@ a {
   color: var(--text-soft);
 }
 
-.contact-text {
-  color: var(--text);
-  font-size: 0.92rem;
-}
+
