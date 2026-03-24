@@ -731,6 +731,41 @@ a {
   word-break: break-word;
 }
 
+/* NOTEBOOK PAGE */
+
+.notebook-hero {
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+}
+
+.notebook-title {
+  font-size: 2.4rem;
+  margin: 0 0 0.6rem;
+  line-height: 1.15;
+  max-width: 760px;
+}
+
+.notebook-subtitle {
+  max-width: 720px;
+  color: var(--text-soft);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0 0 1.8rem;
+}
+
+.notebook-card {
+  min-height: 240px;
+}
+
+.notebook-meta {
+  margin: 0.15rem 0 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-soft);
+}
+
 .contact-text {
   color: var(--text);
   font-size: 0.92rem;
