@@ -7,14 +7,34 @@
   const cards = Array.from(grid.querySelectorAll('.project-card'));
 
   function showFilter(filter) {
-    buttons.forEach((b) => b.classList.toggle('active', b.dataset.sub === filter));
+  buttons.forEach(b =>
+    b.classList.toggle('active', b.dataset.sub === filter)
+  );
 
-    let visibleCards = [];
-    if (filter === 'all') {
-      visibleCards = cards;
-    } else {
-      visibleCards = cards.filter((c) => c.dataset.category === filter);
-    }
+  let visibleCards = [];
+
+  if (filter === 'all') {
+    visibleCards = cards;
+  } else {
+    visibleCards = cards.filter(c => c.dataset.category === filter);
+  }
+
+  // Vider la grille
+  grid.innerHTML = '';
+
+  // Réinjecter uniquement les bonnes cartes (dans le bon ordre)
+  visibleCards.forEach((card, i) => {
+    card.style.display = 'flex';
+    card.classList.remove('visible');
+
+    grid.appendChild(card);
+
+    // animation clean
+    setTimeout(() => {
+      card.classList.add('visible');
+    }, i * 60);
+  });
+}
 
     cards.forEach((c) => c.classList.remove('visible'));
 
