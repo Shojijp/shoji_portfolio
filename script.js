@@ -165,3 +165,24 @@
     });
   });
 })();
+
+// ---------- Story train link to Keio ----------
+(function () {
+  const trainLink = document.getElementById('story-train-link');
+  if (!trainLink) return;
+
+  let isLeaving = false;
+
+  trainLink.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    if (isLeaving) return;
+    isLeaving = true;
+
+    trainLink.classList.add('is-departing');
+
+    setTimeout(() => {
+      window.location.href = trainLink.getAttribute('href');
+    }, 900);
+  });
+})();
