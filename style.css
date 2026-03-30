@@ -544,13 +544,13 @@ a {
 
 .subcat-grid .project-card {
   opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
+  transform: translateY(10px) scale(0.995);
+  transition: opacity .3s ease, transform .3s ease;
 }
 
 .subcat-grid .project-card.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 /* small stagger helper: we will set style via JS (delay) */
