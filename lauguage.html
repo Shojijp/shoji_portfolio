@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Languages — Shoji / Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Language learning and communication journey by Shoji: Japanese, sign languages, English, and intercultural growth.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">Shoji</div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="project.html" class="nav-link">Projects</a>
+        <a href="story.html" class="nav-link">Story</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section projects-landing">
+      <div class="container">
+        <a href="project.html" class="back-link">← Back to Projects</a>
+        <p class="hero-kicker">Languages • Shoji Archive</p>
+        <h1 class="projects-landing-title">Learning through language & connection</h1>
+        <p class="projects-landing-subtitle">
+          Japanese • Sign Languages • English • Cultural growth — language as a way to connect, adapt, and build.
+        </p>
+
+        <div class="subcat-row" role="tablist" aria-label="Languages subcategories">
+          <button class="subcat-btn active" data-sub="all">All</button>
+          <button class="subcat-btn" data-sub="japanese">Japanese</button>
+          <button class="subcat-btn" data-sub="sign">Sign Languages</button>
+          <button class="subcat-btn" data-sub="english">English</button>
+          <button class="subcat-btn" data-sub="culture">Cross-cultural</button>
+        </div>
+
+        <div class="projects-grid subcat-grid" id="subcat-grid">
+          <article class="project-card" data-category="japanese">
+            <span class="project-pill">Japanese</span>
+            <h3 class="project-title">Japanese learning journey</h3>
+            <p class="project-desc">Progress, methods, immersion, and long-term goals through Japanese study.</p>
+            <a class="project-link view-btn" href="#" data-id="l1">View</a>
+          </article>
+
+          <article class="project-card" data-category="sign">
+            <span class="project-pill">Sign Languages</span>
+            <h3 class="project-title">Sign language exploration</h3>
+            <p class="project-desc">Interest in visual communication, accessibility, and signed languages.</p>
+            <a class="project-link view-btn" href="#" data-id="l2">View</a>
+          </article>
+
+          <article class="project-card" data-category="english">
+            <span class="project-pill">English</span>
+            <h3 class="project-title">English as an international tool</h3>
+            <p class="project-desc">Communication, self-expression, and access to wider global learning.</p>
+            <a class="project-link view-btn" href="#" data-id="l3">View</a>
+          </article>
+
+          <article class="project-card" data-category="culture">
+            <span class="project-pill">Cross-cultural</span>
+            <h3 class="project-title">Language through human connection</h3>
+            <p class="project-desc">How languages shape belonging, identity, and intercultural understanding.</p>
+            <a class="project-link view-btn" href="#" data-id="l4">View</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Shoji / Sofiane. Built as a living archive.</p>
+    </div>
+  </footer>
+
+  <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" aria-label="Close">×</button>
+      <div class="modal-body">
+        <h3 id="modal-title"></h3>
+        <p id="modal-desc"></p>
+        <div id="modal-media"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
