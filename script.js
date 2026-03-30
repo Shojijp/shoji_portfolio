@@ -7,50 +7,39 @@
   const cards = Array.from(grid.querySelectorAll('.project-card'));
 
   function showFilter(filter) {
-  buttons.forEach(b =>
-    b.classList.toggle('active', b.dataset.sub === filter)
-  );
+    buttons.forEach((b) => {
+      b.classList.toggle('active', b.dataset.sub === filter);
+    });
 
-  let visibleCards = [];
+    let visibleCards = [];
 
-  if (filter === 'all') {
-    visibleCards = cards;
-  } else {
-    visibleCards = cards.filter(c => c.dataset.category === filter);
-  }
+    if (filter === 'all') {
+      visibleCards = cards;
+    } else {
+      visibleCards = cards.filter((c) => c.dataset.category === filter);
+    }
 
-  // Vider la grille
-  grid.innerHTML = '';
+    // vide la grille
+    grid.innerHTML = '';
 
-  // Réinjecter uniquement les bonnes cartes (dans le bon ordre)
-  visibleCards.forEach((card, i) => {
-    card.style.display = 'flex';
-    card.classList.remove('visible');
+    // réinjecte seulement les cartes visibles
+    visibleCards.forEach((card, i) => {
+      card.style.display = 'flex';
+      card.classList.remove('visible');
+      card.style.transitionDelay = `${i * 60}ms`;
 
-    grid.appendChild(card);
+      grid.appendChild(card);
 
-    // animation clean
-    setTimeout(() => {
-      card.classList.add('visible');
-    }, i * 60);
-  });
-}
-
-    cards.forEach((c) => c.classList.remove('visible'));
-
-    window.requestAnimationFrame(() => {
-      visibleCards.forEach((card, i) => {
-        card.style.transitionDelay = `${i * 70}ms`;
-        void card.offsetWidth;
+      requestAnimationFrame(() => {
         card.classList.add('visible');
       });
-
-      setTimeout(() => {
-        cards.forEach((c) => {
-          c.style.transitionDelay = '';
-        });
-      }, visibleCards.length * 80 + 500);
     });
+
+    setTimeout(() => {
+      visibleCards.forEach((card) => {
+        card.style.transitionDelay = '';
+      });
+    }, visibleCards.length * 70 + 300);
   }
 
   buttons.forEach((btn) => {
@@ -126,11 +115,21 @@
     }
   });
 
-  closeBtn.addEventListener('click', closeModal);
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
       closeModal();
     }
   });
+})();
+
+// ---------- Footer year ----------
+(function () {
+  const year = document.getElementById('year');
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
 })();
