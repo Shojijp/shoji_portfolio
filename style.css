@@ -767,4 +767,52 @@ a {
   color: var(--text-soft);
 }
 
+.notebook-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.6rem;
+}
+
+.view-switch {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.view-mode-btn {
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  transition: transform .12s ease, background .12s, color .12s;
+}
+
+.view-mode-btn.active {
+  background: var(--accent);
+  color: #2b1a1f;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+#subcat-grid.grid-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.3rem;
+}
+
+#subcat-grid.list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#subcat-grid.list-view .project-card {
+  width: 100%;
+  min-height: auto;
+}
 
