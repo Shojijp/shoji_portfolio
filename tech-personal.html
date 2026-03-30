@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tech Personal — Shoji / Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal tech projects by Shoji.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">Shoji</div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="project.html" class="nav-link">Projects</a>
+        <a href="story.html" class="nav-link">Story</a>
+        <a href="notebook.html" class="nav-link">Notebook</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section projects-landing">
+      <div class="container">
+        <a href="tech.html" class="back-link">← Back to Tech</a>
+        <p class="hero-kicker">Tech / Personal</p>
+        <h1 class="projects-landing-title">Independent tech projects</h1>
+        <p class="projects-landing-subtitle">
+          Technical work imagined and developed on my own — from web concepts to personal systems and tools.
+        </p>
+
+        <div class="subcat-row" role="tablist" aria-label="Personal tech categories">
+          <button class="subcat-btn active" data-sub="all">All</button>
+          <button class="subcat-btn" data-sub="web">Web</button>
+          <button class="subcat-btn" data-sub="tools">Tools</button>
+          <button class="subcat-btn" data-sub="concepts">Concepts</button>
+        </div>
+
+        <div class="projects-grid subcat-grid" id="subcat-grid">
+          <article class="project-card" data-category="tools">
+            <span class="project-pill">Tools</span>
+            <h3 class="project-title">DJ Core</h3>
+            <p class="project-desc">A personal technical concept centered on structure, flow, and music logic.</p>
+            <a class="project-link view-btn" href="#" data-id="tp1">View</a>
+          </article>
+
+          <article class="project-card" data-category="web">
+            <span class="project-pill">Web</span>
+            <h3 class="project-title">Saint-Valentine Website</h3>
+            <p class="project-desc">A creative and interactive web project built around emotion, design, and user experience.</p>
+            <a class="project-link view-btn" href="#" data-id="tp2">View</a>
+          </article>
+
+          <article class="project-card" data-category="web">
+            <span class="project-pill">Web</span>
+            <h3 class="project-title">Personal Portfolio System</h3>
+            <p class="project-desc">The ongoing design and coding of a living archive representing multiple layers of identity.</p>
+            <a class="project-link view-btn" href="#" data-id="tp3">View</a>
+          </article>
+
+          <article class="project-card" data-category="concepts">
+            <span class="project-pill">Concepts</span>
+            <h3 class="project-title">Personal System Concepts</h3>
+            <p class="project-desc">Early-stage ideas for tools, interfaces, and technical structures built from personal curiosity.</p>
+            <a class="project-link view-btn" href="#" data-id="tp4">View</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Shoji / Sofiane. Built as a living archive.</p>
+    </div>
+  </footer>
+
+  <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" aria-label="Close">×</button>
+      <div class="modal-body">
+        <h3 id="modal-title"></h3>
+        <p id="modal-desc"></p>
+        <div id="modal-media"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
