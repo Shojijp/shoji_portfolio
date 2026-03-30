@@ -948,6 +948,36 @@ a {
   font-size: 1.1rem;
 }
 
+.story-next-link-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.2rem;
+}
+
+.story-next-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-soft);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.story-next-link:hover {
+  transform: translateY(3px);
+  color: var(--text);
+}
+
+.story-next-text {
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+}
+
+.story-next-arrow {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
 @media (max-width: 900px) {
   .story-editorial-title {
     font-size: 2.5rem;
