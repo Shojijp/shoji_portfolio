@@ -1240,6 +1240,19 @@ a {
     radial-gradient(circle, rgba(120,200,80,0.22) 0 2px, transparent 2.5px) 12px center / 34px 8px repeat-x;
 }
 
+.track-sign {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid var(--border-soft);
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  letter-spacing: 0.08em;
+}
+
 .track-stop {
   position: absolute;
   bottom: 10px;
