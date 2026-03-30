@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tech Academic — Shoji / Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Academic tech projects by Shoji from university and IUT.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">Shoji</div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="project.html" class="nav-link">Projects</a>
+        <a href="story.html" class="nav-link">Story</a>
+        <a href="notebook.html" class="nav-link">Notebook</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section projects-landing">
+      <div class="container">
+        <a href="tech.html" class="back-link">← Back to Tech</a>
+        <p class="hero-kicker">Tech / Academic</p>
+        <h1 class="projects-landing-title">Academic technical projects</h1>
+        <p class="projects-landing-subtitle">
+          Technical work developed through university learning: coding exercises, data logic, and structured academic projects.
+        </p>
+
+        <div class="subcat-row" role="tablist" aria-label="Academic tech categories">
+          <button class="subcat-btn active" data-sub="all">All</button>
+          <button class="subcat-btn" data-sub="programming">Programming</button>
+          <button class="subcat-btn" data-sub="data">Data</button>
+          <button class="subcat-btn" data-sub="database">Database</button>
+          <button class="subcat-btn" data-sub="analysis">Analysis</button>
+        </div>
+
+        <div class="projects-grid subcat-grid" id="subcat-grid">
+          <article class="project-card" data-category="programming">
+            <span class="project-pill">Programming</span>
+            <h3 class="project-title">Python coursework projects</h3>
+            <p class="project-desc">Programming exercises and structured technical development through academic training.</p>
+            <a class="project-link view-btn" href="#" data-id="ta1">View</a>
+          </article>
+
+          <article class="project-card" data-category="data">
+            <span class="project-pill">Data</span>
+            <h3 class="project-title">Data handling & processing</h3>
+            <p class="project-desc">Projects involving data manipulation, structure, and exploration in an academic context.</p>
+            <a class="project-link view-btn" href="#" data-id="ta2">View</a>
+          </article>
+
+          <article class="project-card" data-category="database">
+            <span class="project-pill">Database</span>
+            <h3 class="project-title">SQL and database logic</h3>
+            <p class="project-desc">Learning database systems, queries, logic building, and information structuring.</p>
+            <a class="project-link view-btn" href="#" data-id="ta3">View</a>
+          </article>
+
+          <article class="project-card" data-category="analysis">
+            <span class="project-pill">Analysis</span>
+            <h3 class="project-title">Analytical methods & structured reasoning</h3>
+            <p class="project-desc">Technical projects showing problem-solving, logic, and data-oriented academic thinking.</p>
+            <a class="project-link view-btn" href="#" data-id="ta4">View</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Shoji / Sofiane. Built as a living archive.</p>
+    </div>
+  </footer>
+
+  <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" aria-label="Close">×</button>
+      <div class="modal-body">
+        <h3 id="modal-title"></h3>
+        <p id="modal-desc"></p>
+        <div id="modal-media"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
