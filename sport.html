@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sport — Shoji / Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sport projects and experiences by Shoji: volleyball, basketball, futsal, and training.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">Shoji</div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="project.html" class="nav-link">Projects</a>
+        <a href="story.html" class="nav-link">Story</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section projects-landing">
+      <div class="container">
+        <a href="project.html" class="back-link">← Back to Projects</a>
+        <p class="hero-kicker">Sport • Shoji Archive</p>
+        <h1 class="projects-landing-title">Performance, discipline & movement</h1>
+        <p class="projects-landing-subtitle">
+          Volleyball • Basketball • Futsal • Training — a physical side built through effort and repetition.
+        </p>
+
+        <div class="subcat-row" role="tablist" aria-label="Sport subcategories">
+          <button class="subcat-btn active" data-sub="all">All</button>
+          <button class="subcat-btn" data-sub="volleyball">Volleyball</button>
+          <button class="subcat-btn" data-sub="basketball">Basketball</button>
+          <button class="subcat-btn" data-sub="futsal">Futsal</button>
+          <button class="subcat-btn" data-sub="training">Training</button>
+        </div>
+
+        <div class="projects-grid subcat-grid" id="subcat-grid">
+          <article class="project-card" data-category="volleyball">
+            <span class="project-pill">Volleyball</span>
+            <h3 class="project-title">Competitive volleyball journey</h3>
+            <p class="project-desc">Experiences, tournaments, role, and long-term ambitions in volleyball.</p>
+            <a class="project-link view-btn" href="#" data-id="s1">View</a>
+          </article>
+
+          <article class="project-card" data-category="basketball">
+            <span class="project-pill">Basketball</span>
+            <h3 class="project-title">Basketball captaincy & team experience</h3>
+            <p class="project-desc">Leadership, court vision, team structure, and competition moments.</p>
+            <a class="project-link view-btn" href="#" data-id="s2">View</a>
+          </article>
+
+          <article class="project-card" data-category="futsal">
+            <span class="project-pill">Futsal</span>
+            <h3 class="project-title">Futsal as hybrid conditioning</h3>
+            <p class="project-desc">Explosiveness, endurance, rhythm, and game intelligence through futsal.</p>
+            <a class="project-link view-btn" href="#" data-id="s3">View</a>
+          </article>
+
+          <article class="project-card" data-category="training">
+            <span class="project-pill">Training</span>
+            <h3 class="project-title">Hybrid body development</h3>
+            <p class="project-desc">Strength, aesthetics, mobility, and performance-oriented physical work.</p>
+            <a class="project-link view-btn" href="#" data-id="s4">View</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Shoji / Sofiane. Built as a living archive.</p>
+    </div>
+  </footer>
+
+  <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" aria-label="Close">×</button>
+      <div class="modal-body">
+        <h3 id="modal-title"></h3>
+        <p id="modal-desc"></p>
+        <div id="modal-media"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
