@@ -542,17 +542,15 @@ a {
   transform:translateY(-2px);
 }
 
-/* animated grid items */
 .subcat-grid .project-card {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition: opacity .36s ease, transform .36s cubic-bezier(.2,.8,.2,1);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
 }
 
-/* visible state applied by JS */
 .subcat-grid .project-card.visible {
-  opacity:1;
-  transform: translateY(0) scale(1);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* small stagger helper: we will set style via JS (delay) */
