@@ -981,3 +981,177 @@ a {
   }
 }
 
+/* KEIO PAGE */
+
+.keio-page {
+  padding-top: 4.8rem;
+  padding-bottom: 5rem;
+}
+
+.keio-shell {
+  background: linear-gradient(180deg, rgba(248, 212, 221, 0.55), rgba(255, 255, 255, 0.72));
+  border: 1px solid var(--border-soft);
+  border-radius: 32px;
+  padding: 2.2rem;
+  box-shadow: 0 14px 36px rgba(15, 7, 32, 0.05);
+}
+
+.keio-label {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  margin: 0 0 0.9rem;
+}
+
+.keio-title {
+  font-size: 3.1rem;
+  line-height: 1.02;
+  margin: 0 0 1rem;
+  max-width: 760px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.keio-subtitle {
+  max-width: 760px;
+  color: var(--text-soft);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0 0 2rem;
+}
+
+.keio-top-grid {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.keio-main-card,
+.keio-side-card,
+.keio-card {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--border-soft);
+  border-radius: 28px;
+  padding: 1.6rem;
+}
+
+.keio-main-card h2,
+.keio-card h2 {
+  margin: 0 0 0.9rem;
+  font-size: 1.08rem;
+  font-weight: 800;
+}
+
+.keio-main-card p,
+.keio-card p {
+  margin: 0 0 1rem;
+  color: var(--text-soft);
+  font-size: 0.96rem;
+  line-height: 1.8;
+}
+
+.keio-main-card p:last-child,
+.keio-card p:last-child {
+  margin-bottom: 0;
+}
+
+.keio-side-card {
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keio-side-placeholder {
+  color: var(--text-soft);
+  text-align: center;
+  font-size: 1rem;
+}
+
+.keio-divider-pill {
+  width: 100%;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-soft);
+  font-size: 0.98rem;
+}
+
+.keio-bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.3rem;
+}
+
+.keio-card {
+  min-height: 220px;
+}
+
+.keio-next-link-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.keio-next-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-soft);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.keio-next-link:hover {
+  transform: translateY(3px);
+  color: var(--text);
+}
+
+.keio-next-text {
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+}
+
+.keio-next-arrow {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+@media (max-width: 960px) {
+  .keio-title {
+    font-size: 2.4rem;
+  }
+
+  .keio-top-grid,
+  .keio-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .keio-side-card,
+  .keio-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .keio-shell {
+    padding: 1.3rem;
+    border-radius: 24px;
+  }
+
+  .keio-title {
+    font-size: 2rem;
+  }
+
+  .keio-main-card,
+  .keio-side-card,
+  .keio-card {
+    padding: 1.2rem;
+  }
+}
+
