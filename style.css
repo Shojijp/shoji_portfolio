@@ -835,7 +835,7 @@ a {
 }
 
 .story-editorial-shell {
-  background: #e8bcc3;
+  background: var(--accent-soft);
   border-radius: 28px;
   padding: 2rem;
 }
@@ -844,7 +844,7 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: 0.72rem;
-  color: #6f5960;
+  color: var(--text-soft);
   margin: 0 0 0.8rem;
 }
 
@@ -865,16 +865,47 @@ a {
 }
 
 .story-intro-card {
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.42);
   border-radius: 34px;
   padding: 1.2rem;
 }
 
 .story-intro-inner {
-  background: rgba(255, 255, 255, 0.56);
+  background: rgba(255, 255, 255, 0.72);
   border-radius: 28px;
   padding: 1.5rem 1.6rem;
   min-height: 260px;
+  border: 1px solid var(--border-soft);
+}
+
+.story-photo-card {
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 28px;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-soft);
+}
+
+.story-path-pill {
+  width: 100%;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.4rem;
+  color: var(--text-soft);
+  font-size: 1rem;
+  border: 1px solid var(--border-soft);
+}
+
+.story-large-card {
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 28px;
+  padding: 1.7rem 1.6rem;
+  min-height: 320px;
+  border: 1px solid var(--border-soft);
 }
 
 .story-intro-inner h2,
@@ -887,7 +918,7 @@ a {
 .story-intro-inner p,
 .story-large-card p {
   margin: 0 0 1rem;
-  color: #574c50;
+  color: var(--text-soft);
   font-size: 0.96rem;
   line-height: 1.8;
 }
@@ -897,14 +928,7 @@ a {
   margin-bottom: 0;
 }
 
-.story-photo-card {
-  background: rgba(255, 255, 255, 0.56);
-  border-radius: 28px;
-  min-height: 320px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 .story-photo-placeholder {
   color: #5f5257;
@@ -912,16 +936,6 @@ a {
   text-align: center;
 }
 
-.story-path-pill {
-  width: 100%;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.62);
-  border-radius: 999px;
-  padding: 0.8rem 1rem;
-  margin-bottom: 1.4rem;
-  color: #5d5054;
-  font-size: 1rem;
-}
 
 .story-bottom-grid {
   display: grid;
@@ -929,12 +943,6 @@ a {
   gap: 1.4rem;
 }
 
-.story-large-card {
-  background: rgba(255, 255, 255, 0.56);
-  border-radius: 28px;
-  padding: 1.7rem 1.6rem;
-  min-height: 320px;
-}
 
 .story-large-card h2 {
   font-size: 1.1rem;
