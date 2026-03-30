@@ -827,3 +827,149 @@ a {
   min-height: auto;
 }
 
+/* STORY EDITORIAL PAGE */
+
+.story-editorial {
+  padding-top: 4.8rem;
+  padding-bottom: 5rem;
+}
+
+.story-editorial-shell {
+  background: #e8bcc3;
+  border-radius: 28px;
+  padding: 2rem;
+}
+
+.story-mini-label {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: #6f5960;
+  margin: 0 0 0.8rem;
+}
+
+.story-editorial-title {
+  font-size: 3.4rem;
+  line-height: 1;
+  margin: 0 0 1.8rem;
+  max-width: 760px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.story-top-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.story-intro-card {
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 34px;
+  padding: 1.2rem;
+}
+
+.story-intro-inner {
+  background: rgba(255, 255, 255, 0.56);
+  border-radius: 28px;
+  padding: 1.5rem 1.6rem;
+  min-height: 260px;
+}
+
+.story-intro-inner h2,
+.story-large-card h2 {
+  margin: 0 0 0.85rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.story-intro-inner p,
+.story-large-card p {
+  margin: 0 0 1rem;
+  color: #574c50;
+  font-size: 0.96rem;
+  line-height: 1.8;
+}
+
+.story-intro-inner p:last-child,
+.story-large-card p:last-child {
+  margin-bottom: 0;
+}
+
+.story-photo-card {
+  background: rgba(255, 255, 255, 0.56);
+  border-radius: 28px;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-photo-placeholder {
+  color: #5f5257;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.story-path-pill {
+  width: 100%;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.62);
+  border-radius: 999px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.4rem;
+  color: #5d5054;
+  font-size: 1rem;
+}
+
+.story-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+
+.story-large-card {
+  background: rgba(255, 255, 255, 0.56);
+  border-radius: 28px;
+  padding: 1.7rem 1.6rem;
+  min-height: 320px;
+}
+
+.story-large-card h2 {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 900px) {
+  .story-editorial-title {
+    font-size: 2.5rem;
+  }
+
+  .story-top-grid,
+  .story-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .story-photo-card,
+  .story-large-card,
+  .story-intro-inner {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .story-editorial-shell {
+    padding: 1.2rem;
+    border-radius: 22px;
+  }
+
+  .story-editorial-title {
+    font-size: 2rem;
+  }
+
+  .story-intro-inner,
+  .story-large-card {
+    padding: 1.2rem;
+  }
+}
+
