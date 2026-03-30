@@ -133,3 +133,25 @@
     year.textContent = new Date().getFullYear();
   }
 })();
+
+(function () {
+  const grid = document.getElementById('subcat-grid');
+  if (!grid) return;
+
+  const viewButtons = document.querySelectorAll('.view-mode-btn');
+  if (!viewButtons.length) return;
+
+  grid.classList.add('grid-view');
+
+  viewButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const view = btn.dataset.view;
+
+      viewButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      grid.classList.remove('grid-view', 'list-view');
+      grid.classList.add(`${view}-view`);
+    });
+  });
+})();
