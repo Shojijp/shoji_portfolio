@@ -4,11 +4,118 @@
   <meta charset="UTF-8">
   <title>Story – Shoji</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The story behind Shoji / Sofiane.">
+  <meta name="description" content="The story behind Shoji / Sofiane — identity, Japan, rebuilding.">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .story-editorial { padding-top: 4rem; padding-bottom: 5rem; }
+
+    .story-chip {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
+      font-weight: 500; color: var(--accent-strong);
+      padding: .22rem .7rem; border-radius: 999px;
+      background: var(--accent-soft); border: .5px solid var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .story-main-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.4rem; line-height: 1.04; letter-spacing: -.03em;
+      margin-bottom: .5rem; color: var(--text); font-weight: 400;
+    }
+
+    .story-main-title em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--accent-strong), #b09de8);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .story-hero-sub { font-size: .92rem; color: var(--text-soft); margin-bottom: 2rem; line-height: 1.65; }
+
+    .quote-dark {
+      background: #1a1520; border-radius: 22px;
+      padding: 2rem 2.2rem; margin-bottom: 2rem; color: #f0eaf5;
+    }
+    .quote-dark p { font-family: 'DM Serif Display', serif; font-size: 1.5rem; font-style: italic; line-height: 1.45; margin-bottom: .9rem; }
+    .quote-dark span { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(240,234,245,.45); }
+
+    /* METRO */
+    .metro-bar {
+      display: flex; align-items: flex-start; gap: 0; margin-bottom: 2rem;
+      padding: 1.1rem 1.4rem; background: rgba(255,255,255,.8);
+      border: .5px solid var(--border-soft); border-radius: 18px;
+    }
+    .metro-station { display: flex; flex-direction: column; align-items: center; gap: .35rem; cursor: pointer; flex: 1; }
+    .metro-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--border-soft); border: 2px solid var(--border-soft); transition: all .25s; position: relative; z-index: 2; }
+    .metro-station.active .metro-dot { background: var(--accent-strong); border-color: var(--accent-strong); }
+    .metro-station.done .metro-dot { background: var(--accent); border-color: var(--accent-strong); }
+    .metro-station:hover .metro-dot { border-color: var(--accent-strong); transform: scale(1.15); }
+    .metro-num { font-size: .65rem; font-weight: 500; color: var(--text-soft); transition: color .25s; }
+    .metro-station.active .metro-num, .metro-station.done .metro-num { color: var(--accent-strong); }
+    .metro-name { font-size: .65rem; color: var(--text-soft); text-align: center; line-height: 1.3; max-width: 70px; transition: color .25s; }
+    .metro-station.active .metro-name { color: var(--text); font-weight: 500; }
+    .metro-line { flex: 1; height: 2.5px; background: var(--border-soft); margin-top: 5px; position: relative; z-index: 1; transition: background .4s; }
+    .metro-line.done { background: var(--accent); }
+
+    /* CHAPTERS */
+    .story-chapter { display: none; }
+    .story-chapter.active { display: block; animation: fadeUp .3s ease; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .ch-num { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-strong); margin-bottom: .35rem; font-weight: 500; }
+    .ch-title { font-family: 'DM Serif Display', serif; font-size: 2.2rem; font-weight: 400; line-height: 1.1; margin-bottom: 1.4rem; color: var(--text); letter-spacing: -.02em; }
+    .ch-title em { font-style: italic; background: linear-gradient(135deg, var(--accent-strong), #b09de8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .story-card { background: #fff; border: .5px solid var(--border-soft); border-radius: 20px; padding: 1.4rem 1.5rem; margin-bottom: 1rem; }
+    .story-card p { font-size: .92rem; color: var(--text-soft); line-height: 1.85; margin-bottom: .85rem; }
+    .story-card p:last-child { margin-bottom: 0; }
+    .story-card h3 { font-size: .95rem; font-weight: 500; margin-bottom: .6rem; color: var(--text); }
+    .story-card-rose { background: var(--accent-soft); border-color: var(--accent); }
+    .story-card-dark { background: #1a1520; border-color: rgba(255,255,255,.08); }
+    .story-card-dark p { color: rgba(240,234,245,.7); }
+    .story-card-dark h3 { color: #f0eaf5; }
+    .story-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+
+    .story-photo-slot { border-radius: 18px; overflow: hidden; border: 1.5px dashed var(--accent); margin-bottom: 1rem; background: rgba(244,182,194,.06); }
+    .story-photo-slot img { width: 100%; height: 300px; object-fit: cover; display: block; }
+    .story-photo-slot img.tall { height: 360px; }
+    .story-photo-inner { height: 280px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; }
+    .story-photo-inner.tall { height: 340px; }
+    .story-photo-icon { font-size: 1.8rem; opacity: .4; }
+    .story-photo-label { font-size: .82rem; font-weight: 500; color: var(--accent-strong); }
+    .story-photo-desc { font-size: .72rem; color: var(--text-soft); text-align: center; max-width: 280px; line-height: 1.5; }
+    .story-photo-caption { padding: .55rem 1rem; font-size: .72rem; color: var(--text-soft); border-top: 1px dashed var(--accent); font-style: italic; }
+
+    .story-quote { border-left: 2.5px solid var(--accent-strong); padding: .85rem 1.2rem; background: rgba(244,182,194,.08); border-radius: 0 12px 12px 0; margin: 1rem 0; }
+    .story-quote p { font-family: 'DM Serif Display', serif; font-size: 1.05rem; font-style: italic; color: var(--text); margin: 0; line-height: 1.5; }
+
+    .story-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .85rem; }
+    .story-tag { font-size: .73rem; padding: .24rem .75rem; border-radius: 999px; border: .5px solid var(--border-soft); background: rgba(255,255,255,.9); color: var(--text-soft); }
+    .story-tag-rose { background: var(--accent-soft); border-color: var(--accent); color: #5a2535; }
+
+    .story-milestones { display: flex; flex-direction: column; gap: .55rem; margin-top: 1rem; }
+    .story-milestone { display: flex; align-items: center; gap: .8rem; background: #fff; border: .5px solid var(--border-soft); border-radius: 11px; padding: .65rem .9rem; }
+    .story-ms-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-strong); flex-shrink: 0; }
+    .story-ms-text { font-size: .85rem; color: var(--text); font-weight: 500; }
+    .story-ms-sub { font-size: .75rem; color: var(--text-soft); margin-left: auto; }
+
+    .story-train-nav { display: flex; flex-direction: column; align-items: center; gap: .8rem; margin-top: 2.5rem; cursor: pointer; }
+    .story-train-nav-label { font-size: .88rem; letter-spacing: .05em; color: var(--text-soft); transition: color .2s; font-weight: 500; }
+    .story-train-nav:hover .story-train-nav-label { color: var(--text); }
+
+    @media (max-width: 720px) {
+      .story-main-title { font-size: 2.4rem; }
+      .ch-title { font-size: 1.7rem; }
+      .story-grid-2 { grid-template-columns: 1fr; }
+      .metro-name { display: none; }
+    }
+    @media (max-width: 480px) {
+      .story-main-title { font-size: 2rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -28,112 +135,226 @@
   <main>
     <section class="section story-editorial">
       <div class="container">
-        <div class="story-editorial-shell">
-          <p class="story-mini-label">Shoji / Sofiane</p>
-          <h1 class="story-editorial-title">A path shaped by identity, effort, and rebuilding.</h1>
 
-          <div class="story-top-grid">
-            <div class="story-intro-card">
-              <div class="story-intro-inner">
-                <h2>Who I am?</h2>
-                <p>
-                  I am Sofiane, also known as Shoji. I move between code, sport,
-                  languages, visual creation, and long-term ambition.
-                </p>
-                <p>
-                  My path is not linear. It is built through curiosity, discipline,
-                  reinvention, and the search for a place where I can truly grow.
-                </p>
-              </div>
-            </div>
+        <div class="story-chip">翔司 / Sofiane — Story</div>
+        <h1 class="story-main-title">A path shaped by identity,<br>effort, and <em>rebuilding</em>.</h1>
+        <p class="story-hero-sub">Hard of hearing. Data student. Dancer. Language builder.<br>On the way back to Japan — for good.</p>
 
-            <div class="story-photo-card">
-              <div class="story-photo-placeholder">Photo of me</div>
-            </div>
-          </div>
-
-          <div class="story-path-pill">Path / Journey</div>
-
-          <div class="story-bottom-grid">
-            <article class="story-large-card">
-              <h2>Academic</h2>
-              <p>
-                My academic path is built around data, logic, programming, and the
-                desire to connect technical knowledge with real human meaning.
-              </p>
-              <p>
-                I do not only want to learn in a traditional way. I want to build,
-                apply, experiment, and grow through interdisciplinary environments.
-              </p>
-            </article>
-
-            <article class="story-large-card">
-              <h2>Professional</h2>
-              <p>
-                Beyond school, I am interested in creating projects that reflect
-                both structure and personality: tools, web experiences, ideas,
-                archives, and future systems.
-              </p>
-              <p>
-                I want my work to connect technology, creativity, and long-term
-                vision in a way that feels personal and meaningful.
-              </p>
-            </article>
-          </div>
-          
-          <div class="story-train-wrap">
-            <a href="keio.html" class="story-train-link" id="story-train-link" aria-label="Go to Keio page">
-              <span class="story-train-label">Next stop: Keio</span>
-          
-              <div class="story-train-track">
-                <div class="jp-train" id="jp-train">
-                  <div class="train-car train-front">
-                    <span class="train-window"></span>
-                    <span class="train-window"></span>
-                    <span class="train-window"></span>
-                  </div>
-          
-                  <div class="train-connector"></div>
-          
-                  <div class="train-car train-back">
-                    <span class="train-window"></span>
-                    <span class="train-window"></span>
-                    <span class="train-window"></span>
-                  </div>
-                </div>
-          
-                <div class="track-line"></div>
-                <div class="track-stop stop-left"></div>
-                <div class="track-stop stop-right"></div>
-              </div>
-          
-              <div class="station-card">
-                <div class="station-top-row">
-                  <span class="station-small">Story</span>
-                  <span class="station-small station-number">S01</span>
-                </div>
-          
-                <div class="station-green-line">
-                  <span class="station-dot left"></span>
-                  <span class="station-dot right"></span>
-                </div>
-          
-                <div class="station-main-row">
-                  <span class="station-side-label">Journey</span>
-          
-                  <div class="station-center">
-                    <span class="station-jp">慶應</span>
-                    <span class="station-main-title">Keio</span>
-                    <span class="station-subtitle">次は / Next</span>
-                  </div>
-          
-                  <span class="station-side-label">Future</span>
-                </div>
-              </div>
-            </a>
-          </div>
-          
+        <div class="quote-dark">
+          <p>"When I am in Japan, everything that weighs on me in France becomes quiet. I feel light. I feel myself."</p>
+          <span>Sofiane / Shoji — Solo trip, Kawasaki 2025</span>
         </div>
+
+        <!-- METRO BAR -->
+        <div class="metro-bar">
+          <div class="metro-station active" onclick="goTo(0)"><div class="metro-dot"></div><div class="metro-num">01</div><div class="metro-name">Who I am</div></div>
+          <div class="metro-line" id="line-0"></div>
+          <div class="metro-station" onclick="goTo(1)"><div class="metro-dot"></div><div class="metro-num">02</div><div class="metro-name">First trip</div></div>
+          <div class="metro-line" id="line-1"></div>
+          <div class="metro-station" onclick="goTo(2)"><div class="metro-dot"></div><div class="metro-num">03</div><div class="metro-name">Dark period</div></div>
+          <div class="metro-line" id="line-2"></div>
+          <div class="metro-station" onclick="goTo(3)"><div class="metro-dot"></div><div class="metro-num">04</div><div class="metro-name">Back alone</div></div>
+          <div class="metro-line" id="line-3"></div>
+          <div class="metro-station" onclick="goTo(4)"><div class="metro-dot"></div><div class="metro-num">05</div><div class="metro-name">The promise</div></div>
+          <div class="metro-line" id="line-4"></div>
+          <div class="metro-station" onclick="goTo(5)"><div class="metro-dot"></div><div class="metro-num">06</div><div class="metro-name">Why SFC</div></div>
+        </div>
+
+        <!-- CH 01 -->
+        <div class="story-chapter active" id="ch-0">
+          <p class="ch-num">Chapter 01</p>
+          <h2 class="ch-title">Who I am</h2>
+          <div class="story-grid-2">
+            <div class="story-card">
+              <h3>Identity</h3>
+              <p>My name is Sofiane. I also go by Shoji — 翔司 — a name I chose, a self I built.</p>
+              <p>I am hard of hearing. I grew up navigating a world not designed for me — the French educational system, social structures, a city that never quite felt like home.</p>
+              <p>I am a data science student, a former semi-professional volleyball player, a dancer, a photographer, and someone learning Japanese on his own since 2025.</p>
+            </div>
+            <div class="story-card story-card-rose">
+              <h3>What drives me</h3>
+              <p>My path is not linear. But it is intentional.</p>
+              <p>I have always existed at the intersection of multiple worlds — between hearing and deaf communities, between France and Japan, between technical logic and artistic expression.</p>
+              <p>That intersection is not a contradiction. It is who I am.</p>
+              <div class="story-tags">
+                <span class="story-tag story-tag-rose">Hard of hearing</span>
+                <span class="story-tag">Data / Code</span>
+                <span class="story-tag">LSF · JSL</span>
+                <span class="story-tag">Volleyball</span>
+                <span class="story-tag">K-pop dance</span>
+                <span class="story-tag">Photography</span>
+                <span class="story-tag">日本語</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CH 02 -->
+        <div class="story-chapter" id="ch-1">
+          <p class="ch-num">Chapter 02</p>
+          <h2 class="ch-title">The first time I felt like <em>myself</em></h2>
+          <div class="story-card">
+            <p>In my second year of university, I was selected among five students from INJS Paris to travel to Japan for an institutional program. Five students. I was one of them.</p>
+          </div>
+          <div class="story-photo-slot">
+            <img src="assets/img/injs_trip.jpg" alt="Parmi les 5 sélectionnés de l'INJS Paris" class="tall" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="story-photo-inner tall" style="display:none">
+              <span class="story-photo-icon">📸</span>
+              <span class="story-photo-label">DSC_4754.JPEG</span>
+              <span class="story-photo-desc">Toi parmi les 5 sélectionnés de l'INJS Paris — devant un temple japonais</span>
+            </div>
+            <p class="story-photo-caption">Parmi les 5 sélectionnés de l'INJS Paris — visite institutionnelle au Japon</p>
+          </div>
+          <div class="story-card">
+            <p>At Tsukuba University for the Deaf, we played a kind of tag. I was a chaser. My joy that day was at its highest. I ran until I could not stand. I collapsed on the ground, completely out of breath, legs gone. I had never experienced that before.</p>
+          </div>
+          <div class="story-quote"><p>"I didn't even know I could feel that light."</p></div>
+          <div class="story-card">
+            <p>I cried three times during that trip. Once during the stay. Once at the airport. Once at takeoff, leaving Japan behind. I also felt, somewhere I can't fully explain, the presence of my father.</p>
+          </div>
+        </div>
+
+        <!-- CH 03 -->
+        <div class="story-chapter" id="ch-2">
+          <p class="ch-num">Chapter 03</p>
+          <h2 class="ch-title">The dark period</h2>
+          <div class="story-grid-2">
+            <div class="story-card story-card-dark">
+              <h3>What happened</h3>
+              <p>When I returned to France — the depression hit. Hard. What I had found in Japan, I could no longer access here. The weight came back. The noise. The distance between who I was in Japan and who I was expected to be in France.</p>
+              <p>I had been hard of hearing my whole life, navigating a system not built for me. But coming back after finding a place where I felt whole — made the contrast unbearable.</p>
+            </div>
+            <div class="story-card">
+              <h3>The reconstruction</h3>
+              <p>I rebuilt. Not because things became easier — but because I had a direction. The depression was real. The reconstruction was real too.</p>
+              <p>Step by step, I stopped just dreaming about Japan and started building the actual path to get there. Every action since then has been part of that plan.</p>
+              <div class="story-quote" style="margin-top:.9rem"><p>"I had seen what was possible. That image didn't leave me."</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CH 04 -->
+        <div class="story-chapter" id="ch-3">
+          <p class="ch-num">Chapter 04</p>
+          <h2 class="ch-title">Going back — <em>alone</em></h2>
+          <div class="story-card">
+            <p>I went back. Solo. Three weeks. I lived in Kawasaki — not as a tourist, but as someone testing whether this feeling was real or just an escape. It was real.</p>
+          </div>
+          <div class="story-photo-slot">
+            <img src="assets/img/kuma_kawasaki.jpg" alt="Avec Kuma — Kawasaki 2025" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="story-photo-inner" style="display:none">
+              <span class="story-photo-icon">📸</span>
+              <span class="story-photo-label">576175314_...jpg</span>
+              <span class="story-photo-desc">Toi et Kuma (@kuma_wh_step) avec des Famichiki — nuit à Kawasaki 2025</span>
+            </div>
+            <p class="story-photo-caption">Avec Kuma (@kuma_wh_step) — rencontre spontanée, Kawasaki 2025</p>
+          </div>
+          <div class="story-card">
+            <p>A grandmother from Okinawa stopped me in the street just to talk. I met people at a cultural festival who became real friends. I was interviewed by Kuma — a content creator I now stay in contact with. I lived — purely, simply — the daily life I had been dreaming about.</p>
+          </div>
+          <div class="story-photo-slot">
+            <img src="assets/img/dinner_festival.jpg" alt="Dîner avec des amis du festival" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="story-photo-inner" style="display:none">
+              <span class="story-photo-icon">📸</span>
+              <span class="story-photo-label">WhatsApp_Image_2026-04-03.jpeg</span>
+              <span class="story-photo-desc">Dîner avec des amis rencontrés au festival culturel</span>
+            </div>
+            <p class="story-photo-caption">Dîner avec des amis du festival culturel</p>
+          </div>
+          <div class="story-quote"><p>"The sense of being exactly where I was supposed to be."</p></div>
+        </div>
+
+        <!-- CH 05 -->
+        <div class="story-chapter" id="ch-4">
+          <p class="ch-num">Chapter 05</p>
+          <h2 class="ch-title">The <em>promise</em></h2>
+          <div class="story-card">
+            <p>During my first trip, I spoke Japanese with a professor — enough to surprise everyone in the room, including myself. He told me to come back and study here. I promised I would. He said to be patient.</p>
+          </div>
+          <div class="story-photo-slot">
+            <img src="assets/img/promise_moment.jpg" alt="Le moment de la promesse" class="tall" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="story-photo-inner tall" style="display:none">
+              <span class="story-photo-icon">📸</span>
+              <span class="story-photo-label">WhatsApp_Image_2026-04-03.jpeg ← LA PHOTO CENTRALE</span>
+              <span class="story-photo-desc">"Est-ce que c'est possible que je puisse étudier au Japon ?" — Le professeur à droite a dit oui. C'est là que la promesse est née.</span>
+            </div>
+            <p class="story-photo-caption">Le moment où tout a changé — la promesse faite au professeur japonais</p>
+          </div>
+          <div class="story-quote"><p>"He said to be patient. I promised I would come back. I will."</p></div>
+          <div class="story-milestones">
+            <div class="story-milestone"><div class="story-ms-dot"></div><span class="story-ms-text">JLPT N3</span><span class="story-ms-sub">July 2026 — Nantes</span></div>
+            <div class="story-milestone"><div class="story-ms-dot"></div><span class="story-ms-text">JLPT N2</span><span class="story-ms-sub">December 2026 — Japan</span></div>
+            <div class="story-milestone"><div class="story-ms-dot"></div><span class="story-ms-text">Working Holiday Visa — Kawasaki</span><span class="story-ms-sub">July 2026</span></div>
+            <div class="story-milestone"><div class="story-ms-dot"></div><span class="story-ms-text">Keio SFC AO Application</span><span class="story-ms-sub">2027</span></div>
+          </div>
+        </div>
+
+        <!-- CH 06 -->
+        <div class="story-chapter" id="ch-5">
+          <p class="ch-num">Chapter 06</p>
+          <h2 class="ch-title">Why <em>Keio SFC</em></h2>
+          <div class="story-photo-slot">
+            <img src="assets/img/seita_first_day.jpg" alt="Premier jour avec Seita" class="tall" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="story-photo-inner tall" style="display:none">
+              <span class="story-photo-icon">📸</span>
+              <span class="story-photo-label">IMG_1223.JPEG</span>
+              <span class="story-photo-desc">Premier jour avec Seita — maintenant étudiant à Keio SFC. On se retrouvera là-bas.</span>
+            </div>
+            <p class="story-photo-caption">Premier jour avec Seita — maintenant étudiant à Keio SFC. On se retrouvera là-bas.</p>
+          </div>
+          <div class="story-card">
+            <p>SFC is not just a university. It is the only place I have found where everything I am — data, accessibility, identity, language — can exist in the same space.</p>
+            <p>I already have a friend there. I already have a connection to the deaf community there. I already have a promise to keep there.</p>
+          </div>
+          <div class="story-quote"><p>"SFC is where that project becomes possible. And I already know someone waiting for me there."</p></div>
+          <div class="story-tags" style="margin-bottom:.5rem">
+            <span class="story-tag story-tag-rose">LSF × JSL</span>
+            <span class="story-tag">Accessibility</span>
+            <span class="story-tag">Data science</span>
+            <span class="story-tag">INJS Paris</span>
+            <span class="story-tag">EIS Faculty</span>
+            <span class="story-tag">AO 2027</span>
+          </div>
+        </div>
+
+        <!-- TRAIN NAVIGATION -->
+        <div class="story-train-nav" id="story-train-nav">
+          <span class="story-train-nav-label" id="train-nav-label">Next station → First trip</span>
+          <div class="story-train-track">
+            <div class="jp-train" id="jp-train">
+              <div class="train-car train-front">
+                <span class="train-window"></span><span class="train-window"></span><span class="train-window"></span>
+              </div>
+              <div class="train-connector"></div>
+              <div class="train-car train-back">
+                <span class="train-window"></span><span class="train-window"></span><span class="train-window"></span>
+              </div>
+            </div>
+            <div class="track-line"></div>
+            <div class="track-stop stop-left"></div>
+            <div class="track-stop stop-right"></div>
+          </div>
+          <div class="station-card">
+            <div class="station-top-row">
+              <span class="station-small" id="st-from">Chapter 01</span>
+              <span class="station-small station-number" id="st-num">S01</span>
+            </div>
+            <div class="station-green-line">
+              <span class="station-dot left"></span>
+              <span class="station-dot right"></span>
+            </div>
+            <div class="station-main-row">
+              <span class="station-side-label" id="st-side-l">Journey</span>
+              <div class="station-center">
+                <span class="station-jp" id="st-jp">次へ</span>
+                <span class="station-main-title" id="st-name">→ 02</span>
+                <span class="station-subtitle" id="st-sub">次の駅 / Next station</span>
+              </div>
+              <span class="station-side-label" id="st-side-r">Next</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
@@ -145,5 +366,81 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    const STATIONS = [
+      { num:'S01', name:'→ 02', jp:'次へ', from:'Chapter 01', sideL:'Who I am',    sideR:'First trip',   label:'Next station → First trip',   sub:'次の駅 / Next station' },
+      { num:'S02', name:'→ 03', jp:'次へ', from:'Chapter 02', sideL:'First trip',  sideR:'Dark period',  label:'Next station → Dark period',   sub:'次の駅 / Next station' },
+      { num:'S03', name:'→ 04', jp:'次へ', from:'Chapter 03', sideL:'Dark period', sideR:'Back alone',   label:'Next station → Back alone',    sub:'次の駅 / Next station' },
+      { num:'S04', name:'→ 05', jp:'次へ', from:'Chapter 04', sideL:'Back alone',  sideR:'The promise',  label:'Next station → The promise',   sub:'次の駅 / Next station' },
+      { num:'S05', name:'→ 06', jp:'次へ', from:'Chapter 05', sideL:'The promise', sideR:'Why SFC',      label:'Next station → Why SFC',       sub:'次の駅 / Next station' },
+      { num:'S06', name:'Keio', jp:'慶應', from:'Chapter 06', sideL:'Why SFC',     sideR:'慶應 SFC',     label:'Terminus → Keio SFC',          sub:'終点 / Terminus'       },
+    ];
+
+    let current = 0;
+    let isAnimating = false;
+
+    function updateMetro(idx) {
+      document.querySelectorAll('.metro-station').forEach((s,i) => {
+        s.classList.remove('active','done');
+        if (i === idx) s.classList.add('active');
+        else if (i < idx) s.classList.add('done');
+      });
+      document.querySelectorAll('.metro-line').forEach((l,i) => l.classList.toggle('done', i < idx));
+    }
+
+    function updateStation(idx) {
+      const s = STATIONS[idx];
+      document.getElementById('st-num').textContent    = s.num;
+      document.getElementById('st-name').textContent   = s.name;
+      document.getElementById('st-jp').textContent     = s.jp;
+      document.getElementById('st-from').textContent   = s.from;
+      document.getElementById('st-side-l').textContent = s.sideL;
+      document.getElementById('st-side-r').textContent = s.sideR;
+      document.getElementById('train-nav-label').textContent = s.label;
+      document.getElementById('st-sub').textContent    = s.sub;
+    }
+
+    function goTo(idx) {
+      current = idx;
+      document.querySelectorAll('.story-chapter').forEach((ch,i) => ch.classList.toggle('active', i === idx));
+      updateMetro(idx);
+      updateStation(idx);
+    }
+
+    document.getElementById('story-train-nav').addEventListener('click', function() {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      const train = document.getElementById('jp-train');
+      train.style.transition = 'transform .85s cubic-bezier(.22,.8,.22,1)';
+      train.style.transform  = 'translateX(340px)';
+
+      setTimeout(() => {
+        if (current === 5) {
+          window.location.href = 'keio.html';
+          return;
+        }
+        goTo(current + 1);
+        train.style.transition = 'none';
+        train.style.transform  = 'translateX(-120px)';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            train.style.transition = 'transform .85s cubic-bezier(.22,.8,.22,1)';
+            train.style.transform  = 'translateX(0)';
+            setTimeout(() => { isAnimating = false; }, 900);
+          });
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 750);
+    });
+
+    const trainNav = document.getElementById('story-train-nav');
+    const jpTrain  = document.getElementById('jp-train');
+    trainNav.addEventListener('mouseenter', () => { if (!isAnimating) jpTrain.style.transform = 'translateX(18px)'; });
+    trainNav.addEventListener('mouseleave', () => { if (!isAnimating) jpTrain.style.transform = 'translateX(0)'; });
+
+    updateStation(0);
+    updateMetro(0);
+  </script>
 </body>
 </html>
