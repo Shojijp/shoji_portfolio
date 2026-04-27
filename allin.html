@@ -47,7 +47,7 @@
     /* ══ LIST VIEW ══ */
     #view-list { position: relative; z-index: 5; }
 
-    .hero { padding: 3rem 1.8rem 1.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; min-height: 380px; }
+    .hero { padding: 3rem 0 1.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; min-height: 380px; }
     .hero-left { display: flex; flex-direction: column; }
     .hero-right { display: flex; align-items: center; gap: 0; animation: fadeUp .8s ease .4s both; position: relative; }
     .powell-img-wrap { position: relative; flex-shrink: 0; width: 52%; }
@@ -107,7 +107,7 @@
     @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* Accordion */
-    .accordion { margin: 0 1.8rem 1.5rem; }
+    .accordion { margin: 0 0 1.5rem; }
     .acc-trigger { width: 100%; background: var(--bg2); border: .5px solid var(--border); border-radius: 16px; padding: .9rem 1.1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all .2s; text-align: left; }
     .acc-trigger:hover { border-color: var(--border-rose); background: var(--rose-dim); }
     .acc-trigger-left { display: flex; align-items: center; gap: .7rem; }
@@ -125,7 +125,7 @@
     .acc-quote p { font-family: 'DM Serif Display', serif; font-size: .82rem; font-style: italic; color: rgba(240,234,245,.3); line-height: 1.6; }
 
     /* Trajectory */
-    .traj-section { padding: 0 1.8rem 1.8rem; }
+    .traj-section { padding: 0 0 1.8rem; }
     .traj-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .55rem; }
     .traj-label { font-size: .56rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text-ghost); }
     .traj-pct { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--rose); }
@@ -170,7 +170,7 @@
 
     /* Film progression */
     .film-progress {
-      margin: 0 1.8rem 1.5rem;
+      margin: 0 0 1.5rem;
       background: rgba(255,255,255,.02);
       border: .5px solid rgba(255,255,255,.06);
       border-radius: 14px;
@@ -212,7 +212,7 @@
     .dc.hi { border-color: rgba(230,139,160,.12); background: rgba(230,139,160,.04); }
 
     /* Parts list */
-    .parts-section { padding: 0 1.8rem 3rem; }
+    .parts-section { padding: 0 0 3rem; }
     .parts-eyebrow { font-size: .55rem; letter-spacing: .18em; text-transform: uppercase; color: var(--text-ghost); margin-bottom: .8rem; }
 
     .part-row {
@@ -305,6 +305,7 @@
 
   <!-- ══ LIST VIEW ══ -->
   <div id="view-list">
+  <div class="container" style="max-width:1120px;margin:0 auto;padding:0 1.5rem">
 
     <section class="hero">
       <!-- LEFT -->
@@ -389,9 +390,8 @@
       <div id="parts-list"></div>
     </section>
 
-  </div>
-
-  <!-- ══ DETAIL VIEW ══ -->
+  </div><!-- /container -->
+  </div><!-- /view-list -->
   <div id="view-detail">
     <div class="back-btn" id="back-btn">← Back to the film</div>
     <div id="detail-inner"></div>
