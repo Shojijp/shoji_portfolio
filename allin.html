@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ALL IN — Shoji</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose: #e68ba0;
+      --rose-dim: rgba(230,139,160,.15);
+      --purple: #b09de8;
+      --bg: #06040a;
+      --bg2: rgba(255,255,255,.028);
+      --bg3: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.06);
+      --border-rose: rgba(230,139,160,.22);
+      --text: #f0eaf5;
+      --text-dim: rgba(240,234,245,.6);
+      --text-muted: rgba(240,234,245,.38);
+      --text-ghost: rgba(240,234,245,.22);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; overflow-x: hidden; }
+
+    /* AMBIENT */
+    .orb { position: fixed; border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0; animation: drift 10s ease-in-out infinite alternate; }
+    .orb-1 { width: 400px; height: 400px; background: rgba(230,139,160,.09); top: -100px; left: -80px; }
+    .orb-2 { width: 280px; height: 280px; background: rgba(176,157,232,.08); bottom: -60px; right: -60px; animation-delay: -5s; }
+    .orb-3 { width: 180px; height: 180px; background: rgba(230,139,160,.05); top: 40%; left: 30%; animation-delay: -8s; }
+    @keyframes drift { from { transform: translate(0,0); } to { transform: translate(26px,18px); } }
+    .scanlines { position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.06) 2px, rgba(0,0,0,.06) 4px); pointer-events: none; z-index: 1; }
+
+    /* NAV */
+    .site-header { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: .65rem 1.8rem; background: rgba(6,4,10,.88); backdrop-filter: blur(16px); border-bottom: .5px solid var(--border); }
+    .logo { font-family: 'DM Serif Display', serif; font-size: .9rem; padding: .22rem .65rem; border: .5px solid rgba(255,255,255,.1); border-radius: 999px; color: rgba(240,234,245,.6); text-decoration: none; }
+    .nav { display: flex; gap: .1rem; }
+    .nav a { font-size: .72rem; padding: .24rem .55rem; border-radius: 999px; color: var(--text-muted); text-decoration: none; transition: color .2s; }
+    .nav a:hover { color: rgba(240,234,245,.7); }
+
+    /* ══ LIST VIEW ══ */
+    #view-list { position: relative; z-index: 5; }
+
+    .hero { padding: 3rem 1.8rem 1.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; min-height: 380px; }
+    .hero-left { display: flex; flex-direction: column; }
+    .hero-right { display: flex; align-items: center; gap: 0; animation: fadeUp .8s ease .4s both; position: relative; }
+    .powell-img-wrap { position: relative; flex-shrink: 0; width: 52%; }
+    .powell-img {
+      width: 100%; border-radius: 0;
+      object-fit: cover; object-position: center top;
+      filter: grayscale(20%) contrast(1.05) brightness(.85);
+      display: block;
+      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to right, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+    }
+    .powell-text-side { flex: 1; padding-left: .5rem; display: flex; flex-direction: column; gap: .6rem; }
+    .powell-quote-big { font-family: 'DM Serif Display', serif; font-size: .95rem; font-style: italic; color: rgba(240,234,245,.42); line-height: 1.7; }
+    .powell-attr-big { font-size: .56rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(240,234,245,.2); }
+    .powell-block { display: none; }
+    @media (max-width: 640px) { .hero { grid-template-columns: 1fr; } .hero-right { display: none; } }
+    .rec-row { display: flex; align-items: center; gap: .5rem; margin-bottom: 1.3rem; }
+    .rec-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--rose); animation: blink 1.4s ease-in-out infinite; }
+    @keyframes blink { 0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(230,139,160,.5); } 50% { opacity: .2; box-shadow: 0 0 0 5px rgba(230,139,160,0); } }
+    .rec-txt { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); }
+    .hero-title { font-family: 'DM Serif Display', serif; font-size: clamp(3.8rem, 14vw, 6rem); font-weight: 400; line-height: .88; letter-spacing: -.05em; margin-bottom: .5rem; }
+    .hero-title .w1 { display: block; color: var(--text); animation: tIn .8s cubic-bezier(.16,1,.3,1) both; }
+    .hero-title .w2 { display: block; font-style: italic; background: linear-gradient(130deg, var(--rose), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: tIn .8s cubic-bezier(.16,1,.3,1) .14s both; }
+    @keyframes tIn { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-sub { font-size: .68rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text-ghost); animation: fadeUp .8s ease .3s both; }
+
+    /* Live counter */
+    .live-counter {
+      margin-top: 1.6rem;
+      animation: fadeUp .8s ease .5s both;
+    }
+    .counter-line {
+      display: flex; align-items: baseline; gap: .5rem;
+      margin-bottom: .35rem;
+    }
+    .counter-line:last-child { margin-bottom: 0; }
+    .counter-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem; font-weight: 400; line-height: 1;
+      color: var(--rose);
+      min-width: 3.5ch; display: inline-block;
+      letter-spacing: -.04em;
+    }
+    .counter-num.future { color: rgba(240,234,245,.25); }
+    .counter-txt {
+      font-size: .78rem; color: rgba(240,234,245,.35);
+      letter-spacing: .02em; line-height: 1.3;
+    }
+    .counter-txt strong { color: rgba(240,234,245,.6); font-weight: 500; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Ticker */
+    .ticker-wrap { overflow: hidden; border-top: .5px solid var(--border); border-bottom: .5px solid var(--border); padding: .4rem 0; margin: 1.2rem 0; }
+    .ticker { display: flex; gap: 2.8rem; animation: tick 22s linear infinite; white-space: nowrap; }
+    .ticker span { font-size: .6rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-ghost); flex-shrink: 0; }
+    .ticker span.hl { color: rgba(230,139,160,.45); }
+    @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* Accordion */
+    .accordion { margin: 0 1.8rem 1.5rem; }
+    .acc-trigger { width: 100%; background: var(--bg2); border: .5px solid var(--border); border-radius: 16px; padding: .9rem 1.1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all .2s; text-align: left; }
+    .acc-trigger:hover { border-color: var(--border-rose); background: var(--rose-dim); }
+    .acc-trigger-left { display: flex; align-items: center; gap: .7rem; }
+    .acc-icon { font-size: .75rem; color: var(--rose); }
+    .acc-label { font-size: .84rem; font-weight: 500; color: rgba(240,234,245,.65); }
+    .acc-arrow { font-size: .7rem; color: var(--text-muted); transition: transform .3s; }
+    .acc-trigger.open .acc-arrow { transform: rotate(180deg); }
+    .acc-body { max-height: 0; overflow: hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1); }
+    .acc-body.open { max-height: 800px; }
+    .acc-inner { padding: .8rem 0 0; display: flex; flex-direction: column; gap: .5rem; }
+    .acc-block { background: var(--bg2); border: .5px solid var(--border); border-radius: 14px; padding: .9rem 1rem; }
+    .acc-block h4 { font-size: .72rem; font-weight: 500; color: rgba(240,234,245,.5); margin-bottom: .35rem; }
+    .acc-block p { font-size: .8rem; color: var(--text-dim); line-height: 1.85; }
+    .acc-quote { border-left: 1.5px solid var(--border-rose); padding: .6rem .9rem; margin-top: .6rem; }
+    .acc-quote p { font-family: 'DM Serif Display', serif; font-size: .82rem; font-style: italic; color: rgba(240,234,245,.3); line-height: 1.6; }
+
+    /* Trajectory */
+    .traj-section { padding: 0 1.8rem 1.8rem; }
+    .traj-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .55rem; }
+    .traj-label { font-size: .56rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text-ghost); }
+    .traj-pct { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--rose); }
+
+    /* Segment bars */
+    #seg-bars { display: flex; gap: 3px; margin-bottom: .7rem; align-items: center; }
+    .seg-track { flex: 1; height: 2px; background: rgba(255,255,255,.05); border-radius: 999px; position: relative; overflow: visible; }
+    .seg-fill { height: 100%; background: linear-gradient(90deg, var(--rose), var(--purple)); border-radius: 999px; transition: width 1.8s cubic-bezier(.4,0,.2,1); position: relative; }
+    .seg-track.done .seg-fill { width: 100% !important; background: rgba(230,139,160,.4); }
+    .seg-track.future .seg-fill { width: 0% !important; }
+    .seg-plane { position: absolute; right: -6px; top: 50%; transform: translateY(-65%); font-size: .8rem; animation: floatPlane 2.5s ease-in-out infinite; pointer-events: none; }
+    .seg-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.08); flex-shrink: 0; transition: background .4s; }
+    .seg-dot.done { background: rgba(230,139,160,.5); }
+    .seg-dot.now  { background: var(--rose); box-shadow: 0 0 0 3px rgba(230,139,160,.15); animation: ndPulse 2s ease-in-out infinite; }
+
+    /* Colin Powell */
+    .powell-block {
+      display: flex; align-items: center; gap: .9rem;
+      margin-top: 1.8rem;
+      padding: .85rem 1rem;
+      background: rgba(255,255,255,.02);
+      border: .5px solid rgba(255,255,255,.06);
+      border-radius: 14px;
+      animation: fadeUp .8s ease .8s both;
+    }
+    .powell-photo {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(230,139,160,.1);
+      border: .5px solid rgba(230,139,160,.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .powell-initials { font-size: .65rem; font-weight: 500; color: rgba(230,139,160,.5); letter-spacing: .05em; }
+    .powell-content { flex: 1; min-width: 0; }
+    .powell-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: .82rem; font-style: italic;
+      color: rgba(240,234,245,.38); line-height: 1.55;
+      margin-bottom: .2rem;
+    }
+    .powell-attr { font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(240,234,245,.18); }
+
+    /* Film progression */
+    .film-progress {
+      margin: 0 1.8rem 1.5rem;
+      background: rgba(255,255,255,.02);
+      border: .5px solid rgba(255,255,255,.06);
+      border-radius: 14px;
+      padding: .85rem 1rem;
+    }
+    .film-progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .6rem; }
+    .film-progress-label { font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(240,234,245,.25); }
+    .film-progress-count { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--rose); }
+    .film-track { height: 2px; background: rgba(255,255,255,.05); border-radius: 999px; margin-bottom: .5rem; }
+    .film-fill { height: 100%; background: linear-gradient(90deg, var(--rose), var(--purple)); border-radius: 999px; transition: width 1.5s cubic-bezier(.4,0,.2,1); }
+    .film-status { font-size: .72rem; color: rgba(240,234,245,.3); }
+    .film-status.complete { color: #78c850; }
+    .st.next .st-nd {
+      border-color: rgba(230,139,160,.4);
+      background: rgba(230,139,160,.06);
+      animation: iconBlink 2s ease-in-out infinite;
+    }
+    .st.next .st-lbl { color: rgba(230,139,160,.45); }
+    @keyframes iconBlink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: .3; }
+    }
+    .stops { display: flex; justify-content: space-between; margin-bottom: .9rem; }
+    .st { display: flex; flex-direction: column; align-items: center; gap: .3rem; flex: 1; }
+    .st-nd { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .72rem; border: 1px solid rgba(255,255,255,.05); background: rgba(255,255,255,.02); transition: all .3s; }
+    .st.done .st-nd { border-color: rgba(230,139,160,.4); background: rgba(230,139,160,.1); }
+    .st.now .st-nd { border-color: var(--rose); background: rgba(230,139,160,.2); animation: ndPulse 2.2s ease-in-out infinite; }
+    @keyframes ndPulse { 0%,100% { box-shadow: 0 0 0 4px rgba(230,139,160,.08); } 50% { box-shadow: 0 0 0 8px rgba(230,139,160,.03); } }
+    .st.future .st-nd { opacity: .18; }
+    .st-lbl { font-size: .55rem; color: var(--text-muted); text-align: center; line-height: 1.3; }
+    .st.done .st-lbl { color: rgba(230,139,160,.5); }
+    .st.now .st-lbl { color: var(--rose); font-weight: 500; }
+    .st.future .st-lbl { opacity: .2; }
+    .days { display: flex; gap: .4rem; }
+    .dc { flex: 1; background: var(--bg2); border: .5px solid var(--border); border-radius: 10px; padding: .55rem .35rem; text-align: center; }
+    .dc-v { display: block; font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--text); line-height: 1; }
+    .dc-l { display: block; font-size: .52rem; color: var(--text-ghost); margin-top: .18rem; text-transform: uppercase; letter-spacing: .06em; }
+    .dc.hi .dc-v { color: var(--rose); }
+    .dc.hi { border-color: rgba(230,139,160,.12); background: rgba(230,139,160,.04); }
+
+    /* Parts list */
+    .parts-section { padding: 0 1.8rem 3rem; }
+    .parts-eyebrow { font-size: .55rem; letter-spacing: .18em; text-transform: uppercase; color: var(--text-ghost); margin-bottom: .8rem; }
+
+    .part-row {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .9rem 1rem; border-radius: 14px; margin-bottom: .4rem;
+      border: .5px solid var(--border); background: var(--bg2);
+      cursor: pointer; transition: all .22s; position: relative; overflow: hidden;
+    }
+    .part-row::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(230,139,160,.06), transparent); opacity: 0; transition: opacity .22s; }
+    .part-row:hover::before { opacity: 1; }
+    .part-row:hover { border-color: var(--border-rose); transform: translateX(4px); }
+    .part-row.is-locked { opacity: .32; cursor: default; }
+    .part-row.is-locked:hover { transform: none; border-color: var(--border); }
+    .part-row.is-locked:hover::before { opacity: 0; }
+    .part-row.is-active { border-color: var(--border-rose); background: rgba(230,139,160,.04); }
+
+    .p-num { font-size: .54rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(230,139,160,.35); width: 48px; flex-shrink: 0; font-weight: 500; }
+    .part-row.is-active .p-num { color: var(--rose); }
+    .p-body { flex: 1; min-width: 0; }
+    .p-name { font-size: .84rem; font-weight: 500; color: rgba(240,234,245,.65); margin-bottom: .1rem; }
+    .part-row.is-active .p-name { color: var(--text); }
+    .p-lyric { font-size: .64rem; color: var(--text-ghost); font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .p-badge { font-size: .54rem; padding: .13rem .45rem; border-radius: 999px; flex-shrink: 0; font-weight: 500; }
+    .b-done { background: rgba(120,200,80,.08); color: #78c850; border: .5px solid rgba(120,200,80,.15); }
+    .b-active { background: rgba(230,139,160,.1); color: var(--rose); border: .5px solid rgba(230,139,160,.22); animation: bPulse 2s ease-in-out infinite; }
+    @keyframes bPulse { 0%,100% { opacity: 1; } 50% { opacity: .5; } }
+    .b-lock { background: rgba(255,255,255,.02); color: var(--text-ghost); border: .5px solid var(--border); }
+
+    /* ══ DETAIL VIEW ══ */
+    #view-detail { display: none; position: relative; z-index: 5; min-height: 100vh; padding: 1.8rem; }
+    #view-detail.active { display: block; animation: slideIn .35s cubic-bezier(.16,1,.3,1); }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    .back-btn { display: inline-flex; align-items: center; gap: .4rem; font-size: .75rem; color: var(--text-muted); cursor: pointer; margin-bottom: 2rem; padding: .32rem .75rem; border-radius: 999px; border: .5px solid var(--border); background: var(--bg2); transition: all .18s; }
+    .back-btn:hover { color: rgba(240,234,245,.7); border-color: rgba(255,255,255,.12); }
+
+    .detail-chip { font-size: .6rem; letter-spacing: .16em; text-transform: uppercase; color: var(--rose); margin-bottom: .5rem; font-weight: 500; }
+    .detail-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 6vw, 2.8rem); font-weight: 400; line-height: 1.05; color: var(--text); margin-bottom: 1.4rem; }
+
+    /* Lyric */
+    .detail-lyric { border-left: 1.5px solid rgba(230,139,160,.28); padding: .75rem 1rem; margin-bottom: 1.4rem; }
+    .detail-lyric p { font-family: 'DM Serif Display', serif; font-size: .9rem; font-style: italic; color: rgba(240,234,245,.38); line-height: 1.8; margin-bottom: .35rem; }
+    .detail-lyric cite { font-size: .56rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-ghost); font-style: normal; }
+
+    /* Video */
+    .detail-vid { border-radius: 18px; background: var(--bg2); border: .5px solid var(--border); height: 150px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .55rem; margin-bottom: 1.4rem; cursor: pointer; transition: border-color .2s; }
+    .detail-vid:hover { border-color: var(--border-rose); }
+    .vid-play { width: 44px; height: 44px; border-radius: 50%; border: .5px solid rgba(230,139,160,.25); display: flex; align-items: center; justify-content: center; color: rgba(230,139,160,.55); font-size: 1rem; transition: background .2s; }
+    .detail-vid:hover .vid-play { background: rgba(230,139,160,.1); }
+    .vid-lbl { font-size: .64rem; color: var(--text-ghost); letter-spacing: .06em; }
+
+    /* Section label */
+    .detail-section-lbl { font-size: .56rem; letter-spacing: .16em; text-transform: uppercase; color: var(--text-ghost); margin-bottom: .55rem; }
+
+    /* What / Why blocks */
+    .detail-block { font-size: .84rem; color: var(--text-dim); line-height: 1.9; background: var(--bg2); border: .5px solid var(--border); border-radius: 16px; padding: 1rem 1.1rem; margin-bottom: 1.4rem; }
+
+    /* Scroll hint */
+    .scroll-hint { position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%); width: 32px; height: 32px; border-radius: 50%; border: .5px solid var(--border); background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: .8rem; color: var(--text-muted); animation: bounce 2s ease-in-out infinite; z-index: 50; }
+    @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-5px); } }
+
+    /* Footer */
+    .site-footer { position: relative; z-index: 5; border-top: .5px solid var(--border); padding: 1.2rem 1.8rem; }
+    .footer-inner p { font-size: .72rem; color: var(--text-ghost); }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 3.4rem; }
+      .st-lbl { font-size: .5rem; }
+      #view-detail { padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="scanlines"></div>
+
+  <header class="site-header">
+    <a href="index.html" class="logo">Shoji</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="story.html">Story</a>
+      <a href="project.html">Projects</a>
+      <a href="notebook.html">Notebook</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ══ LIST VIEW ══ -->
+  <div id="view-list">
+
+    <section class="hero">
+      <!-- LEFT -->
+      <div class="hero-left">
+        <div class="rec-row"><div class="rec-dot"></div><span class="rec-txt">In production · 2026</span></div>
+        <h1 class="hero-title"><span class="w1">ALL</span><span class="w2">IN</span></h1>
+        <p class="hero-sub">Dole → Seoul → Tokyo → Kawasaki → Keio · 8 chapters</p>
+        <div class="live-counter" id="live-counter"></div>
+      </div>
+
+      <!-- RIGHT — Colin Powell fade -->
+      <div class="hero-right">
+        <div class="powell-img-wrap">
+          <img class="powell-img"
+            src="assets/img/colin_powell.jpg"
+            alt="Colin Powell"
+            onerror="this.parentElement.style.opacity='0'">
+        </div>
+        <div class="powell-text-side">
+          <p class="powell-quote-big">"A dream doesn't become reality through magic; it takes sweat, determination and hard work."</p>
+          <span class="powell-attr-big">Colin Powell</span>
+        </div>
+      </div>
+
+      <!-- old powell block hidden -->
+      <div class="powell-block"></div>
+    </section>
+
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <span>夢番地</span><span class="hl">ALL IN</span><span>Sofiane / Shoji</span><span>🔴 In production</span><span>慶應義塾大学</span><span class="hl">JLPT N3 · July 2026</span><span>Kawasaki · 2026–27</span><span>翔司</span>
+        <span>夢番地</span><span class="hl">ALL IN</span><span>Sofiane / Shoji</span><span>🔴 In production</span><span>慶應義塾大学</span><span class="hl">JLPT N3 · July 2026</span><span>Kawasaki · 2026–27</span><span>翔司</span>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="acc-trigger" id="acc-btn">
+        <div class="acc-trigger-left"><span class="acc-icon">◈</span><span class="acc-label">What is ALL IN?</span></div>
+        <span class="acc-arrow">↓</span>
+      </button>
+      <div class="acc-body" id="acc-body">
+        <div class="acc-inner">
+          <div class="acc-block">
+            <h4>The project</h4>
+            <p>ALL IN is a personal documentary film built as I live it. Not a vlog. Not a portfolio. A film — with a narrative, a structure, a musical thread. The soundtrack is Yumebanchi (夢番地), a song about dreams, time, and everything we carry without realizing it.</p>
+          </div>
+          <div class="acc-block">
+            <h4>Why 8 parts?</h4>
+            <p>Because my journey naturally breaks into 8 key moments. Each part = a video published on SHOJI (YouTube + Instagram). Parts unlock as I live them. What you see in grey hasn't happened yet — but it will.</p>
+          </div>
+          <div class="acc-block">
+            <h4>Why ALL IN?</h4>
+            <p>Because I put everything into this. McDonald's to save money. JLPT N3 in July. Working Holiday Visa. Leaving on July 10th, 2026. Keio SFC in 2027. No plan B.</p>
+            <div class="acc-quote"><p>"When you truly decide, there is no going back. There is only what you do next."</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="traj-section">
+      <div class="traj-header">
+        <span class="traj-label">Trajectory · Live</span>
+        <span class="traj-pct" id="seg-label">—</span>
+      </div>
+      <!-- Segment bars -->
+      <div id="seg-bars"></div>
+      <!-- Stop labels -->
+      <div class="stops" id="stops"></div>
+      <div class="days" id="days"></div>
+    </section>
+
+    <section class="parts-section">
+      <div class="parts-eyebrow">The 8 parts — click to enter</div>
+      <div id="film-progress" class="film-progress">
+        <div class="film-progress-top">
+          <span class="film-progress-label">Film progress</span>
+          <span class="film-progress-count" id="film-count">—/8</span>
+        </div>
+        <div class="film-track"><div class="film-fill" id="film-fill" style="width:0%"></div></div>
+        <span class="film-status" id="film-status">In production...</span>
+      </div>
+      <div id="parts-list"></div>
+    </section>
+
+  </div>
+
+  <!-- ══ DETAIL VIEW ══ -->
+  <div id="view-detail">
+    <div class="back-btn" id="back-btn">← Back to the film</div>
+    <div id="detail-inner"></div>
+    <div class="scroll-hint">↓</div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><p>© <span id="year"></span> Shoji / Sofiane. Built as a living archive<a href="letter.html" style="color:inherit;text-decoration:none;opacity:.15;transition:opacity .3s" onmouseover="this.style.opacity='.4'" onmouseout="this.style.opacity='.15'">.</a></p></div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const STOPS = [
+      { l:'Dole',        d:new Date('2023-05-25'), i:'🏠' },
+      { l:'JLPT Nantes', d:new Date('2026-07-05'), i:'🎓' },
+      { l:'Seoul',       d:new Date('2026-07-10'), i:'✈'  },
+      { l:'Tokyo',       d:new Date('2026-07-16'), i:'🗼'  },
+      { l:'Kawasaki',    d:new Date('2026-07-20'), i:'🍔'  },
+      { l:'Keio SFC',    d:new Date('2027-04-01'), i:'慶'  },
+    ];
+
+    const PARTS = [
+      {
+        n:'Part 1', name:"The child who dreamed", s:'done',
+        lyric:"Kinou ni yume wo takuseba koukai de\nasu ni yume wo takuseba kibou de\nDemo kyou no boku ni yume wo takushite nani ni naru no?",
+        what:"It starts in Dole. A hard-of-hearing kid who doesn't quite fit in the hearing world. Manga opens a window. Japan as a distant star — glimpsed, desired, never reached. And then the moment the star becomes real.",
+        why:"This video is the origin. Before showing the journey, I needed to show where the desire came from. Why Japan? Why now? The answers are in childhood.",
+        vl:'Part 1 — Published on SHOJI YouTube'
+      },
+      {
+        n:'Part 2', name:'Opening — ALL IN', s:'done',
+        lyric:null,
+        what:"90 seconds. A flashback of everything that follows. Then the title appears on black. Yumebanchi starts here. You don't understand everything yet, but you feel something is about to change.",
+        why:"Every film starts with an opening. I needed to set the tone before everything else. This part is the promise made to the viewer.",
+        vl:'Opening — Published on SHOJI YouTube'
+      },
+      {
+        n:'Part 3', name:'First trip — INJS Japan', s:'active',
+        lyric:"Boku wa kitto ima itsuka no yume no ue ni tatte irunda ne\nBoku wa kitto ima dareka no yume no ue ni tatte iru",
+        what:"1 of 5 selected from INJS Paris. Tsukuba University for the Deaf. The professor. The promise. The game of tag where I ran until I collapsed. And three times I cried — during the stay, at the airport, on the plane.",
+        why:"This is the moment the dream became real for the first time. Before this trip, Japan was an idea. After, it was a direction. This video is the exact moment everything changed.",
+        vl:'Part 3 — In production'
+      },
+      {
+        n:'Part 4', name:'Solo trip — Japan + Korea', s:'locked',
+        lyric:"Boku ga tatte iru koko wa kitto dareka no negatteru basho de\nDareka ga tatte iru basho ga kitto boku no nozomu basho de",
+        what:"I go back alone. Three weeks. Kawasaki. Kuma, whom I meet by chance. An Okinawan grandmother in the street. Seoul. The question: is this running away? The answer: no.",
+        why:"Going alone was a test. Do I love Japan, or do I love the idea of Japan? This video is the answer.",
+        vl:'Coming soon'
+      },
+      {
+        n:'Part 5', name:'France — the grind', s:'locked',
+        lyric:"Let's party dance dance dance\nShut up and smile so you can see how beautiful life is",
+        what:"McDonald's permanent contract. Data Science degree. Anki 30 cards/day, zero missed. Gym 5 days/week. JLPT N3 to prepare. All at once. The least glamorous part. Also the most important.",
+        why:"The Japan project isn't just the beautiful parts — it's also the 6am mornings, the Saturday shifts, the days you want to quit but keep going anyway.",
+        vl:'Coming soon'
+      },
+      {
+        n:'Part 6', name:'Midnight — the booking', s:'locked',
+        lyric:null,
+        what:"One single scene. Darkness. The screen lit up in a silent apartment. The cursor hovering over the payment button. And two words: Payment accepted. The point of no return.",
+        why:"There is a precise moment when you truly cross over. Before: planning. After: reality. For me, that moment was that night.",
+        vl:'Coming soon'
+      },
+      {
+        n:'Part 7', name:'New life — Kawasaki', s:'locked',
+        lyric:"Boku wa mou kazoe kirenu hodo no yume wo kanaete irunda ne\nGomen ne kore kara wa ne zutto zutto issho dakara",
+        what:"The apartment. McDonald's Japan. Japanese friends. Mornings with Anki. JLPT passed. Keio application submitted. And the letter. This part ends with a smile — the one you make when you realize you actually did it.",
+        why:"Real life. Not the trip — the life. Showing this daily reality was important so people understand that ALL IN is not luck.",
+        vl:'Coming soon'
+      },
+      {
+        n:'Part 8', name:'The last journey', s:'locked',
+        lyric:null,
+        what:"Bags packed in the apartment. The door closing. The train. The exit. And standing, back to camera, in front of Keio SFC's entrance. The promise kept. ありがとう.",
+        why:"The end of the film is the beginning of something else. That shot, back to camera in front of Keio — it's both a conclusion and an opening.",
+        vl:'Coming soon'
+      },
+    ];
+
+    /* ── LIVE COUNTER ── */
+    const now   = new Date();
+    const DECISION_DATE = new Date('2023-05-25');
+    const JLPT_DATE     = new Date('2026-07-05');
+    const DEPART_DATE   = new Date('2026-07-10');
+    const KAWASAKI_DATE = new Date('2026-07-20');
+    const KEIO_DATE     = new Date('2027-04-01');
+
+    const msPerDay = 864e5;
+
+    function daysAgo(d)   { return Math.floor((now - d) / msPerDay); }
+    function daysUntil(d) { return Math.ceil((d - now) / msPerDay); }
+
+    // Choose the right lines based on where we are
+    const COUNTER_LINES = (() => {
+      if (now < JLPT_DATE) {
+        return [
+          { num: daysAgo(DECISION_DATE),  txt: 'days since the <strong>decision</strong>.', future: false },
+          { num: daysUntil(JLPT_DATE),    txt: 'days until <strong>JLPT N3</strong>.', future: false },
+          { num: daysUntil(DEPART_DATE),  txt: 'days until <strong>leaving France</strong>.', future: false },
+          { num: daysUntil(KEIO_DATE),    txt: 'days until <strong>Keio</strong>.', future: true },
+        ];
+      } else if (now < DEPART_DATE) {
+        return [
+          { num: daysAgo(DECISION_DATE),  txt: 'days since the <strong>decision</strong>.', future: false },
+          { num: daysAgo(JLPT_DATE),      txt: 'days since <strong>JLPT N3</strong>. Done.', future: false },
+          { num: daysUntil(DEPART_DATE),  txt: 'days until <strong>leaving France</strong>.', future: false },
+          { num: daysUntil(KEIO_DATE),    txt: 'days until <strong>Keio</strong>.', future: true },
+        ];
+      } else if (now < KAWASAKI_DATE) {
+        return [
+          { num: daysAgo(DECISION_DATE),  txt: 'days since the <strong>decision</strong>.', future: false },
+          { num: daysAgo(DEPART_DATE),    txt: 'days since <strong>leaving France</strong>.', future: false },
+          { num: daysUntil(KAWASAKI_DATE),txt: 'days until <strong>Kawasaki</strong>.', future: false },
+          { num: daysUntil(KEIO_DATE),    txt: 'days until <strong>Keio</strong>.', future: true },
+        ];
+      } else if (now < KEIO_DATE) {
+        return [
+          { num: daysAgo(DECISION_DATE),  txt: 'days since the <strong>decision</strong>.', future: false },
+          { num: daysAgo(KAWASAKI_DATE),  txt: 'days living <strong>Japan as your daily life</strong>.', future: false },
+          { num: daysUntil(KEIO_DATE),    txt: 'days until <strong>Keio</strong>.', future: false },
+        ];
+      } else {
+        return [
+          { num: daysAgo(DECISION_DATE),  txt: 'days since the <strong>decision</strong>.', future: false },
+          { num: daysAgo(KEIO_DATE),      txt: 'days since <strong>Keio said yes</strong>.', future: false },
+          { num: 0,                        txt: 'The promise is kept. ありがとう.', future: false },
+        ];
+      }
+    })();
+
+    // Animate number counting up
+    function animateCount(el, target, duration) {
+      const start = performance.now();
+      const startVal = 0;
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // ease out cubic
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(startVal + (target - startVal) * ease);
+        el.textContent = current;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // Render counter
+    const counterEl = document.getElementById('live-counter');
+    COUNTER_LINES.forEach((line, i) => {
+      const div = document.createElement('div');
+      div.className = 'counter-line';
+      const numEl = document.createElement('span');
+      numEl.className = 'counter-num' + (line.future ? ' future' : '');
+      numEl.textContent = '0';
+      const txtEl = document.createElement('span');
+      txtEl.className = 'counter-txt';
+      txtEl.innerHTML = line.txt;
+      div.appendChild(numEl);
+      div.appendChild(txtEl);
+      counterEl.appendChild(div);
+
+      // Staggered animation
+      setTimeout(() => {
+        animateCount(numEl, line.num, 1200 + i * 200);
+      }, 600 + i * 180);
+    });
+    const start = STOPS[0].d;
+    const end   = STOPS[STOPS.length - 1].d;
+
+    // Find current segment index
+    let currentSeg = -1;
+    for (let i = 0; i < STOPS.length - 1; i++) {
+      if (now >= STOPS[i].d && now < STOPS[i+1].d) { currentSeg = i; break; }
+    }
+    if (now >= end) currentSeg = STOPS.length - 1;
+
+    // Segment progress (0→100% within current segment)
+    let segPct = 0;
+    if (currentSeg >= 0 && currentSeg < STOPS.length - 1) {
+      const segStart = STOPS[currentSeg].d;
+      const segEnd   = STOPS[currentSeg + 1].d;
+      segPct = Math.min(100, Math.max(0, (now - segStart) / (segEnd - segStart) * 100));
+    }
+
+    // Label
+    const segLabel = document.getElementById('seg-label');
+    if (currentSeg >= 0 && currentSeg < STOPS.length - 1) {
+      segLabel.textContent = STOPS[currentSeg].l + ' → ' + STOPS[currentSeg+1].l + ' · ' + Math.round(segPct) + '%';
+    } else if (now >= end) {
+      segLabel.textContent = 'Keio SFC ✓';
+    }
+
+    // Render segment bars + dots
+    const segBars = document.getElementById('seg-bars');
+    for (let i = 0; i < STOPS.length - 1; i++) {
+      // dot before segment
+      const dot = document.createElement('div');
+      dot.className = 'seg-dot' + (i <= currentSeg ? ' done' : '') + (i === currentSeg ? ' now' : '');
+      segBars.appendChild(dot);
+
+      // bar
+      const track = document.createElement('div');
+      const isCurrent = i === currentSeg;
+      const isDone    = i < currentSeg;
+      const isFuture  = i > currentSeg;
+      track.className = 'seg-track' + (isDone ? ' done' : '') + (isFuture ? ' future' : '');
+
+      const fill = document.createElement('div');
+      fill.className = 'seg-fill';
+      fill.style.width = '0%';
+      track.appendChild(fill);
+
+      // Plane on current segment
+      if (isCurrent) {
+        const plane = document.createElement('div');
+        plane.className = 'seg-plane';
+        plane.textContent = '✈';
+        fill.appendChild(plane);
+      }
+
+      segBars.appendChild(track);
+
+      // Animate fill
+      if (isCurrent) {
+        setTimeout(() => { fill.style.width = segPct + '%'; }, 500);
+      }
+    }
+    // Last dot
+    const lastDot = document.createElement('div');
+    lastDot.className = 'seg-dot' + (now >= end ? ' done' : '');
+    lastDot.textContent = '';
+    segBars.appendChild(lastDot);
+
+    // Stop labels
+    const stopsEl = document.getElementById('stops');
+    STOPS.forEach((s, i) => {
+      const past   = i < currentSeg || (i === currentSeg && now >= s.d);
+      const isNow  = i === currentSeg;
+      const isNext = i === currentSeg + 1; // prochain stop — clignote
+      const cls    = past && !isNow ? 'done' : isNow ? 'now' : isNext ? 'next' : i === 0 && now >= s.d ? 'done' : 'future';
+      stopsEl.innerHTML += `<div class="st ${cls}"><div class="st-nd">${s.i}</div><div class="st-lbl">${s.l}</div></div>`;
+    });
+
+    // Days chips
+    const next  = STOPS.find(s => now < s.d);
+    const dLeft = next ? Math.ceil((next.d - now) / 864e5) : 0;
+    const dGone = Math.floor((now - start) / 864e5);
+    const dKeio = Math.ceil((end - now) / 864e5);
+    document.getElementById('days').innerHTML = `
+      <div class="dc hi"><span class="dc-v">${dLeft}</span><span class="dc-l">→ ${next ? next.l : 'Keio'}</span></div>
+      <div class="dc"><span class="dc-v">${dGone}</span><span class="dc-l">Days on the road</span></div>
+      <div class="dc"><span class="dc-v">${dKeio}</span><span class="dc-l">→ Keio SFC</span></div>`;
+
+    /* ── PARTS LIST ── */
+    const pl = document.getElementById('parts-list');
+
+    PARTS.forEach((p, i) => {
+      const cls   = p.s === 'done' ? '' : p.s === 'active' ? 'is-active' : 'is-locked';
+      const badge = p.s === 'done'
+        ? '<span class="p-badge b-done">Published</span>'
+        : p.s === 'active'
+        ? '<span class="p-badge b-active">● In progress</span>'
+        : '<span class="p-badge b-lock">Coming soon</span>';
+      const lyricPrev = p.lyric ? `<div class="p-lyric">${p.lyric.split('\n')[0]}</div>` : '';
+
+      const row = document.createElement('div');
+      row.className = `part-row ${cls}`;
+      row.innerHTML = `
+        <span class="p-num">${p.n}</span>
+        <div class="p-body"><div class="p-name">${p.name}</div>${lyricPrev}</div>
+        ${badge}`;
+
+      if (p.s !== 'locked') {
+        row.addEventListener('click', () => openDetail(i));
+      }
+      pl.appendChild(row);
+    });
+
+    /* ── FILM PROGRESSION ── */
+    const doneParts   = PARTS.filter(p => p.s === 'done').length;
+    const activeParts = PARTS.filter(p => p.s === 'active').length;
+    const total       = PARTS.length;
+    const filmPct     = Math.round((doneParts / total) * 100);
+    const isComplete  = doneParts === total;
+
+    document.getElementById('film-count').textContent = `${doneParts}/${total}`;
+    document.getElementById('film-status').textContent = isComplete
+      ? '✓ The ALL IN film is complete.'
+      : activeParts > 0
+      ? `Part ${doneParts + 1} in production...`
+      : `${total - doneParts} part${total - doneParts > 1 ? 's' : ''} coming.`;
+    if (isComplete) document.getElementById('film-status').classList.add('complete');
+
+    setTimeout(() => {
+      document.getElementById('film-fill').style.width = filmPct + '%';
+    }, 600);
+
+    /* ── DETAIL VIEW ── */
+    function openDetail(i) {
+      const p = PARTS[i];
+      const list   = document.getElementById('view-list');
+      const detail = document.getElementById('view-detail');
+
+      const lyricBlock = p.lyric
+        ? `<div class="detail-lyric"><p>${p.lyric.replace(/\n/g,'<br>')}</p><cite>夢番地 / Yumebanchi</cite></div>`
+        : '';
+
+      document.getElementById('detail-inner').innerHTML = `
+        <div class="detail-chip">${p.n} — ALL IN</div>
+        <div class="detail-title">${p.name}</div>
+        ${lyricBlock}
+        <div class="detail-vid">
+          <div class="vid-play">▶</div>
+          <div class="vid-lbl">${p.vl}</div>
+        </div>
+        <div class="detail-section-lbl">What it is</div>
+        <div class="detail-block">${p.what}</div>
+        <div class="detail-section-lbl">Why this video</div>
+        <div class="detail-block">${p.why}</div>`;
+
+      list.style.display = 'none';
+      detail.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.getElementById('back-btn').addEventListener('click', () => {
+      document.getElementById('view-detail').classList.remove('active');
+      document.getElementById('view-list').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ── ACCORDION ── */
+    document.getElementById('acc-btn').addEventListener('click', function () {
+      const open = this.classList.toggle('open');
+      document.getElementById('acc-body').classList.toggle('open', open);
+    });
+
+  </script>
+</body>
+</html>
