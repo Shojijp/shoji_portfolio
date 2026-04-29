@@ -415,14 +415,14 @@
 
     const PARTS = [
       {
-        n:'Part 1', name:"The child who dreamed", s:'done',
+        n:'Part 1', name:"The child who dreamed", s:'locked',
         lyric:"Kinou ni yume wo takuseba koukai de\nasu ni yume wo takuseba kibou de\nDemo kyou no boku ni yume wo takushite nani ni naru no?",
         what:"It starts in Dole. A hard-of-hearing kid who doesn't quite fit in the hearing world. Manga opens a window. Japan as a distant star — glimpsed, desired, never reached. And then the moment the star becomes real.",
         why:"This video is the origin. Before showing the journey, I needed to show where the desire came from. Why Japan? Why now? The answers are in childhood.",
         vl:'Part 1 — Published on SHOJI YouTube'
       },
       {
-        n:'Part 2', name:'Opening — ALL IN', s:'done',
+        n:'Part 2', name:'Opening — ALL IN', s:'locked',
         lyric:null,
         what:"90 seconds. A flashback of everything that follows. Then the title appears on black. Yumebanchi starts here. You don't understand everything yet, but you feel something is about to change.",
         why:"Every film starts with an opening. I needed to set the tone before everything else. This part is the promise made to the viewer.",
@@ -433,10 +433,10 @@
         lyric:"Boku wa kitto ima itsuka no yume no ue ni tatte irunda ne\nBoku wa kitto ima dareka no yume no ue ni tatte iru",
         what:"1 of 5 selected from INJS Paris. Tsukuba University for the Deaf. The professor. The promise. The game of tag where I ran until I collapsed. And three times I cried — during the stay, at the airport, on the plane.",
         why:"This is the moment the dream became real for the first time. Before this trip, Japan was an idea. After, it was a direction. This video is the exact moment everything changed.",
-        vl:'Part 3 — In production'
+        vl:'https://www.youtube.com/embed/KVugBtuz2FI'
       },
       {
-        n:'Part 4', name:'Solo trip — Japan + Korea', s:'locked',
+        n:'Part 4', name:'Solo trip — Japan + Korea', s:'active',
         lyric:"Boku ga tatte iru koko wa kitto dareka no negatteru basho de\nDareka ga tatte iru basho ga kitto boku no nozomu basho de",
         what:"I go back alone. Three weeks. Kawasaki. Kuma, whom I meet by chance. An Okinawan grandmother in the street. Seoul. The question: is this running away? The answer: no.",
         why:"Going alone was a test. Do I love Japan, or do I love the idea of Japan? This video is the answer.",
@@ -704,10 +704,10 @@
         <div class="detail-chip">${p.n} — ALL IN</div>
         <div class="detail-title">${p.name}</div>
         ${lyricBlock}
-        <div class="detail-vid">
-          <div class="vid-play">▶</div>
-          <div class="vid-lbl">${p.vl}</div>
-        </div>
+        ${p.vl.startsWith('https') 
+          ? `<iframe style="width:100%;height:280px;border-radius:18px;border:none;" src="${p.vl}" allowfullscreen></iframe>`
+          : `<div class="detail-vid"><div class="vid-play">▶</div><div class="vid-lbl">${p.vl}</div></div>`
+        }
         <div class="detail-section-lbl">What it is</div>
         <div class="detail-block">${p.what}</div>
         <div class="detail-section-lbl">Why this video</div>
