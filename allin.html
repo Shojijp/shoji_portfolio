@@ -429,11 +429,11 @@
         vl:'Opening — Published on SHOJI YouTube'
       },
       {
-        n:'Part 3', name:'First trip — INJS Japan', s:'active',
+        n:'Part 3', name:'First trip — INJS Japan', s:'done',
         lyric:"Boku wa kitto ima itsuka no yume no ue ni tatte irunda ne\nBoku wa kitto ima dareka no yume no ue ni tatte iru",
         what:"1 of 5 selected from INJS Paris. Tsukuba University for the Deaf. The professor. The promise. The game of tag where I ran until I collapsed. And three times I cried — during the stay, at the airport, on the plane.",
         why:"This is the moment the dream became real for the first time. Before this trip, Japan was an idea. After, it was a direction. This video is the exact moment everything changed.",
-        vl:'https://www.youtube.com/embed/KVugBtuz2FI'
+        vl:'https://player.vimeo.com/video/1187600216'
       },
       {
         n:'Part 4', name:'Solo trip — Japan + Korea', s:'active',
@@ -700,14 +700,15 @@
         ? `<div class="detail-lyric"><p>${p.lyric.replace(/\n/g,'<br>')}</p><cite>夢番地 / Yumebanchi</cite></div>`
         : '';
 
+      const vidBlock = p.vl.startsWith('https')
+        ? `<iframe src="${p.vl}" style="width:100%;height:280px;border-radius:18px;border:none;margin-bottom:1.4rem;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
+        : `<div class="detail-vid" style="margin-bottom:1.4rem"><div class="vid-play">▶</div><div class="vid-lbl">${p.vl}</div></div>`;
+
       document.getElementById('detail-inner').innerHTML = `
         <div class="detail-chip">${p.n} — ALL IN</div>
         <div class="detail-title">${p.name}</div>
         ${lyricBlock}
-        ${p.vl.startsWith('https') 
-          ? `<iframe style="width:100%;height:280px;border-radius:18px;border:none;" src="${p.vl}" allowfullscreen></iframe>`
-          : `<div class="detail-vid"><div class="vid-play">▶</div><div class="vid-lbl">${p.vl}</div></div>`
-        }
+        ${vidBlock}
         <div class="detail-section-lbl">What it is</div>
         <div class="detail-block">${p.what}</div>
         <div class="detail-section-lbl">Why this video</div>
