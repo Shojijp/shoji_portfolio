@@ -701,7 +701,9 @@
         : '';
 
       const vidBlock = p.vl.startsWith('https')
-        ? `<iframe src="${p.vl}" style="width:100%;height:280px;border-radius:18px;border:none;margin-bottom:1.4rem;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
+        ? `<div style="position:relative;width:100%;padding-bottom:56.25%;margin-bottom:1.4rem;border-radius:18px;overflow:hidden;background:#000;">
+            <iframe src="${p.vl}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allow="autoplay" allowfullscreen></iframe>
+           </div>`
         : `<div class="detail-vid" style="margin-bottom:1.4rem"><div class="vid-play">▶</div><div class="vid-lbl">${p.vl}</div></div>`;
 
       document.getElementById('detail-inner').innerHTML = `
