@@ -275,6 +275,15 @@
     .ptag { font-size: 0.68rem; padding: 0.15rem 0.55rem; border-radius: 999px; background: var(--bg-alt, #f3efe8); border: 1px solid var(--border-soft, #e4ddd2); color: var(--text-soft, #6b6770); }
     @media (max-width: 860px) { .cv-hero { grid-template-columns: 1fr; } .cv-stat-grid { grid-template-columns: repeat(4,1fr); } .cv-main-grid { grid-template-columns: 1fr; } .cv-name { font-size: 2.3rem; } }
     @media (max-width: 560px) { .cv-shell { padding: 1.3rem; border-radius: 22px; } .cv-name { font-size: 2rem; } .cv-stat-grid { grid-template-columns: 1fr 1fr; } }
+
+    .cv-dl-row { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+    .cv-dl-card { display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.84); border: 1px solid var(--border-soft); border-radius: 14px; padding: 0.85rem 1.1rem; text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease; flex: 1; min-width: 220px; }
+    .cv-dl-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(15,7,32,0.08); border-color: var(--accent); }
+    .cv-dl-icon { font-size: 1.3rem; }
+    .cv-dl-text { display: flex; flex-direction: column; gap: 0.1rem; flex: 1; }
+    .cv-dl-title { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+    .cv-dl-sub { font-size: 0.72rem; color: var(--text-soft); font-weight: 300; }
+    .cv-dl-arrow { font-size: 1rem; color: var(--accent-strong); font-weight: 600; }
   </style>
 
   <script>
